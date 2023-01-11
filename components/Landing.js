@@ -14,17 +14,22 @@ export default function Landing({ navigation }) {
     <SafeAreaView style={globalStyles.container}>
       <View>
         <View style={styles.container}>
-          <Text>Snoozer</Text>
-          <Text>Improve your sleeping patterns</Text>
+          <Image style={styles.logo}></Image>
+          <Text style={styles.title}>Snoozer</Text>
+          <Text style={globalStyles.text}>Improve your sleeping pattern</Text>
         </View>
-        <View>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text>Login</Text>
+        <View style={styles.loginsignup}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            style={globalStyles.button}
+          >
+            <Text style={globalStyles.text}>Login</Text>
           </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-            <Text>Signup</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Signup")}
+            style={globalStyles.button}
+          >
+            <Text style={globalStyles.text}>Signup</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -34,6 +39,11 @@ export default function Landing({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+  },
+  logo: {},
+  title: {},
+  loginsignup: {
     alignItems: "center",
   },
 });
