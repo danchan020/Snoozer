@@ -1,5 +1,3 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
