@@ -15,8 +15,8 @@ export default function Landing({ navigation }) {
       <View>
         <View style={styles.container}>
           <Image style={styles.logo}></Image>
-          <Text style={styles.title}>Snoozer</Text>
-          <Text style={globalStyles.text}>Improve your sleeping pattern</Text>
+          <Text style={styles.title}>☁ Snoozer ☁ </Text>
+          <Text style={globalStyles.text}>Adjust your sleeping pattern</Text>
         </View>
         <View style={styles.loginsignup}>
           <TouchableOpacity
@@ -39,10 +39,21 @@ export default function Landing({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    margin: 50,
+    marginTop: "30%",
     alignItems: "center",
   },
-  logo: {},
-  title: {},
+  logo: {
+    height: 200,
+    width: 200,
+    marginBottom: 20,
+  },
+  title: {
+    color: "black",
+    fontSize: 35,
+    fontFamily: "Inter_400Regular",
+    paddingBottom: 10,
+  },
   loginsignup: {
     alignItems: "center",
   },
