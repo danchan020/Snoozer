@@ -5,7 +5,6 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  Button,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 
@@ -14,7 +13,10 @@ export default function Landing({ navigation }) {
     <SafeAreaView style={globalStyles.container}>
       <View>
         <View style={styles.container}>
-          <Image style={styles.logo}></Image>
+          <Image
+            style={styles.logo}
+            source={require("../assets/snoozer-logo.png")}
+          ></Image>
           <Text style={styles.title}>☁ Snoozer ☁ </Text>
           <Text style={globalStyles.text}>Adjust your sleeping pattern</Text>
         </View>
@@ -44,15 +46,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    height: 200,
-    width: 200,
-    marginBottom: 20,
+    height: 250,
+    width: 300,
+    marginBottom: 15,
   },
   title: {
     color: "black",
-    fontSize: 35,
-    fontFamily: "Inter_400Regular",
-    paddingBottom: 10,
+    fontSize: 37,
+    fontFamily: "Inter_700Bold",
+    paddingBottom: 8,
   },
   loginsignup: {
     alignItems: "center",

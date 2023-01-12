@@ -8,6 +8,10 @@ export const globalStyles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+    fontFamily: "Alegreya_400Regular",
   },
-  button: {},
+  button: {
+    borderColor: "black",
+    borderRadius: 20,
+  },
 });

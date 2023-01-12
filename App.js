@@ -1,17 +1,26 @@
-import { AppLoading } from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import { useFonts, Inter_400Regular } from "@expo-google-fonts/dev";
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_700Bold,
+  Alegreya_400Regular,
+} from "@expo-google-fonts/dev";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({ Inter_400Regular });
+  let [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_700Bold,
+    Alegreya_400Regular,
+  });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <Landing />;
   } else {
     return (
       <NavigationContainer>
