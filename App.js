@@ -9,7 +9,6 @@ import {
   Inter_700Bold,
   Alegreya_400Regular,
 } from "@expo-google-fonts/dev";
-import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -21,7 +20,7 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
-        // await SplashScreen.preventAutoHideAsync();
+        await SplashScreen.preventAutoHideAsync();
         await Font.loadAsync({
           Inter_400Regular,
           Inter_700Bold,
@@ -47,7 +46,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer onLayout={onLayout}>
+    <NavigationContainer onReady={onLayout}>
       <Stack.Navigator>
         <Stack.Screen
           name="Landing"
