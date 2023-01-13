@@ -57,9 +57,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Login"
-          children={() => {
-            <Login />;
-          }}
+          children={() => <Login />}
           options={{
             headerTitleStyle: {
               fontFamily: "Sriracha_400Regular",
@@ -73,9 +71,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Signup"
-          children={() => {
-            <Signup />;
-          }}
+          children={() => <Signup />}
           options={{
             headerTitleStyle: {
               fontFamily: "Sriracha_400Regular",
