@@ -9,9 +9,15 @@ export const globalStyles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontFamily: "Alegreya_400Regular",
+    color: "whitesmoke",
   },
   button: {
-    borderColor: "black",
+    borderColor: "cornflowerblue",
+    borderWidth: 2,
     borderRadius: 20,
+    backgroundColor: "#414999",
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    marginVertical: 5,
   },
 });
