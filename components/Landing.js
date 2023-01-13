@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "black",
-    fontSize: 37,
-    fontFamily: "Inter_700Bold",
+    fontSize: 48,
+    fontFamily: "Sriracha_400Regular",
     paddingBottom: 8,
   },
   loginsignup: {

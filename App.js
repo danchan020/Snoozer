@@ -8,6 +8,7 @@ import {
   Inter_400Regular,
   Inter_700Bold,
   Alegreya_400Regular,
+  Sriracha_400Regular,
 } from "@expo-google-fonts/dev";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -25,6 +26,7 @@ export default function App() {
           Inter_400Regular,
           Inter_700Bold,
           Alegreya_400Regular,
+          Sriracha_400Regular,
         });
       } catch (e) {
         console.warn(e);
@@ -60,8 +62,8 @@ export default function App() {
           }}
           options={{
             headerTitleStyle: {
-              fontFamily: "Inter_400Regular",
-              fontSize: 23,
+              fontFamily: "Sriracha_400Regular",
+              fontSize: 25,
             },
             headerStyle: {
               backgroundColor: "#414999",
@@ -76,8 +78,8 @@ export default function App() {
           }}
           options={{
             headerTitleStyle: {
-              fontFamily: "Inter_400Regular",
-              fontSize: 23,
+              fontFamily: "Sriracha_400Regular",
+              fontSize: 25,
             },
             headerStyle: {
               backgroundColor: "#414999",
