@@ -1,10 +1,16 @@
 import { Formik } from "formik";
 import { View, Text, TextInput, TouchableWithoutFeedback } from "react-native";
+import { globalStyles } from "../styles/global";
 
 export default function Login() {
+  // const handleLogin = () => {}
+
   return (
-    <View>
-      <Formik initialValues={{ email: "", password: "" }}>
+    <View style={globalStyles.container}>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        // onSubmit={handleLogin}
+      >
         {({
           values,
           errors,
@@ -17,9 +23,15 @@ export default function Login() {
         }) => (
           <View>
             <Text>Email</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("email")}
+              value={values.email}
+            />
             <Text>Password</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("password")}
+              value={values.password}
+            />
           </View>
         )}
       </Formik>

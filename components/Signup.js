@@ -1,9 +1,12 @@
 import { Formik } from "formik";
-import { View, Text } from "react-native";
+import { View, Text, TextInput, TouchableWithoutFeedback } from "react-native";
+import { globalStyles } from "../styles/global";
 
 export default function Signup() {
+  // const handleSignup = () => {}
+
   return (
-    <View>
+    <View style={globalStyles.container}>
       <Formik
         initialValues={{
           email: "",
@@ -11,6 +14,7 @@ export default function Signup() {
           password: "",
           passwordConfirmation: "",
         }}
+        // onSubmit={handleSignup}
       >
         {({
           values,
@@ -24,13 +28,25 @@ export default function Signup() {
         }) => (
           <View>
             <Text>Email</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("email")}
+              value={values.email}
+            />
             <Text>Name</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("name")}
+              value={values.name}
+            />
             <Text>Password</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("password")}
+              value={values.password}
+            />
             <Text>Confirm Password</Text>
-            <TextInput />
+            <TextInput
+              onChangeText={handleChange("passwordConfirmation")}
+              value={values.passwordConfirmation}
+            />
           </View>
         )}
       </Formik>
