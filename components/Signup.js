@@ -34,7 +34,7 @@ export default function Signup() {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <View>
+            <View style={styles.container}>
               <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
               <TextInput
                 onChangeText={handleChange("email")}
@@ -74,3 +74,33 @@ export default function Signup() {
     </TouchableWithoutFeedback>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    paddingVertical: 6,
+    paddingHorizontal: 6,
+    marginTop: 10,
+    marginBottom: 10,
+    width: 200,
+    borderRadius: 7,
+    borderColor: "black",
+    borderWidth: "1px",
+    backgroundColor: "#8a91ce",
+  },
+
+  inputfocused: {
+    paddingVertical: 6,
+    paddingHorizontal: 6,
+    marginTop: 10,
+    marginBottom: 10,
+    width: 200,
+    borderRadius: 7,
+    borderColor: "#414999",
+    borderWidth: "1px",
+    backgroundColor: "#fff",
+  },
+
+  container: {
+    paddingTop: "10%",
+  },
+});

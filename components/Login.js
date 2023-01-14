@@ -11,8 +11,7 @@ import {
 import { globalStyles } from "../styles/global";
 
 export default function Login() {
-  const [focus, setFocus] = useState(false);
-  const customStyles = focus ? styles.inputfocused : styles.input;
+  // const customStyles = isFocused ? styles.inputfocused : styles.input;
 
   // const handleLogin = () => {}
 
@@ -40,11 +39,10 @@ export default function Login() {
                 // After research, I still dont quite understand blur/touched in formik... may have to revisit these concepts.
                 onBlur={() => {
                   handleBlur("email");
-                  setFocus(false);
                 }}
-                onFocus={() => setFocus(true)}
+                // onFocus={setFocus}
                 value={values.email}
-                style={customStyles}
+                style={styles.input}
               />
               <Text style={[globalStyles.text, { color: "black" }]}>
                 Password
@@ -53,11 +51,10 @@ export default function Login() {
                 onChangeText={handleChange("password")}
                 onBlur={() => {
                   handleBlur("password");
-                  setFocus(false);
                 }}
-                onFocus={() => setFocus(true)}
+                // onFocus={setFocus}
                 value={values.password}
-                style={customStyles}
+                style={styles.input}
               />
             </View>
           )}
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     width: 200,
-    borderRadius: 3,
+    borderRadius: 7,
     borderColor: "black",
     borderWidth: "1px",
     backgroundColor: "#8a91ce",
@@ -86,7 +83,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     width: 200,
-    borderRadius: 3,
+    borderRadius: 7,
     borderColor: "#414999",
     borderWidth: "1px",
     backgroundColor: "#fff",
