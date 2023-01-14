@@ -7,6 +7,7 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: "#8a91ce",
   },
   text: {
+    textAlign: "center",
     fontSize: 20,
     fontFamily: "Alegreya_400Regular",
     color: "whitesmoke",

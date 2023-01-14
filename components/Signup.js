@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import {
+  StyleSheet,
   Keyboard,
   View,
   Text,
@@ -34,29 +35,37 @@ export default function Signup() {
             /* and other goodies */
           }) => (
             <View>
-              <Text>Email</Text>
+              <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
               <TextInput
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
+                style={styles.input}
               />
-              <Text>Name</Text>
+              <Text style={[globalStyles.text, { color: "black" }]}>Name</Text>
               <TextInput
                 onChangeText={handleChange("name")}
                 onBlur={handleBlur("name")}
                 value={values.name}
+                style={styles.input}
               />
-              <Text>Password</Text>
+              <Text style={[globalStyles.text, { color: "black" }]}>
+                Password
+              </Text>
               <TextInput
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
                 value={values.password}
+                style={styles.input}
               />
-              <Text>Confirm Password</Text>
+              <Text style={[globalStyles.text, { color: "black" }]}>
+                Confirm Password
+              </Text>
               <TextInput
                 onChangeText={handleChange("passwordConfirmation")}
                 onBlur={handleBlur("passwordConfirmation")}
                 value={values.passwordConfirmation}
+                style={styles.input}
               />
             </View>
           )}
