@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Formik } from "formik";
 import {
   StyleSheet,
@@ -7,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 
@@ -30,7 +30,6 @@ export default function Login() {
             handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
           }) => (
             <View style={styles.container}>
               <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
@@ -56,6 +55,12 @@ export default function Login() {
                 value={values.password}
                 style={styles.input}
               />
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={[globalStyles.button, { marginTop: 20 }]}
+              >
+                <Text style={globalStyles.text}>Login</Text>
+              </TouchableOpacity>
             </View>
           )}
         </Formik>

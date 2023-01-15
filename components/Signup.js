@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 
@@ -67,6 +68,12 @@ export default function Signup() {
                 value={values.passwordConfirmation}
                 style={styles.input}
               />
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={[globalStyles.button, { marginTop: 20 }]}
+              >
+                <Text style={globalStyles.text}>Signup</Text>
+              </TouchableOpacity>
             </View>
           )}
         </Formik>

@@ -23,13 +23,13 @@ export default function Landing({ navigation }) {
         <View style={styles.loginsignup}>
           <TouchableOpacity
             onPress={() => navigation.navigate("Login")}
-            style={globalStyles.button}
+            style={[globalStyles.button, { width: 120 }]}
           >
             <Text style={globalStyles.text}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate("Signup")}
-            style={globalStyles.button}
+            style={[globalStyles.button, { width: 120 }]}
           >
             <Text style={globalStyles.text}>Signup</Text>
           </TouchableOpacity>
