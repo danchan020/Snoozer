@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import {
   StyleSheet,
@@ -13,14 +14,18 @@ import { globalStyles } from "../styles/global";
 export default function Login() {
   // const customStyles = isFocused ? styles.inputfocused : styles.input;
 
-  // const handleLogin = () => {}
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate("Home");
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={globalStyles.container}>
         <Formik
           initialValues={{ email: "", password: "" }}
-          // onSubmit={handleLogin}
+          onSubmit={handleLogin}
         >
           {({
             values,

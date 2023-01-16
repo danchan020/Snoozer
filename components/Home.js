@@ -3,9 +3,9 @@ import Alarm from "./Alarm";
 import SetAlarm from "./SetAlarm";
 import Settings from "./Settings";
 
-const Tab = createBottomTabNavigator();
-
 export default function Home() {
+  const Tab = createBottomTabNavigator();
+
   return (
     <Tab.Navigator>
       <Tab.Screen name="Alarm" component={Alarm} />
