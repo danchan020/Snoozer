@@ -8,9 +8,48 @@ export default function Home() {
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Alarm" component={Alarm} />
-      <Tab.Screen name="Set Alarm" component={SetAlarm} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen
+        name="Alarm"
+        component={Alarm}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Sriracha_400Regular",
+            fontSize: 25,
+          },
+          headerStyle: {
+            backgroundColor: "#414999",
+          },
+          headerTintColor: "#D9E4DD",
+        }}
+      />
+      <Tab.Screen
+        name="Set Alarm"
+        component={SetAlarm}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Sriracha_400Regular",
+            fontSize: 25,
+          },
+          headerStyle: {
+            backgroundColor: "#414999",
+          },
+          headerTintColor: "#D9E4DD",
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Sriracha_400Regular",
+            fontSize: 25,
+          },
+          headerStyle: {
+            backgroundColor: "#414999",
+          },
+          headerTintColor: "#D9E4DD",
+        }}
+      />
     </Tab.Navigator>
   );
 }

@@ -53,7 +53,11 @@ export default function App() {
     <NavigationContainer onReady={onLayout}>
       {user ? (
         <Stack.Navigator>
-          <Stack.Screen name="Home" children={() => <Home />} />
+          <Stack.Screen
+            name="Home"
+            children={() => <Home />}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator>
