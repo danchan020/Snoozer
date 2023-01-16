@@ -22,11 +22,14 @@ export default function Home() {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+        tabBarStyle: { height: 110, marginBottom: -30 },
+        tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "white",
+        tabBarActiveBackgroundColor: "#5d65aa",
+        tabBarInactiveBackgroundColor: "#414999",
+        tabBarIconStyle: { marginTop: 10 },
+        tabBarLabelStyle: { marginBottom: 25 },
       })}
-      tabBarOptions={{
-        activeTintColor: "blue",
-        inactiveTintColor: "black",
-      }}
     >
       <Tab.Screen
         name="Alarm"
