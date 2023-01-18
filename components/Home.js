@@ -28,7 +28,7 @@ export default function Home() {
         tabBarActiveBackgroundColor: "#5d65aa",
         tabBarInactiveBackgroundColor: "#414999",
         tabBarIconStyle: { marginTop: 10 },
-        tabBarLabelStyle: { marginBottom: 25 },
+        tabBarLabelStyle: { marginBottom: 20 },
       })}
     >
       <Tab.Screen
