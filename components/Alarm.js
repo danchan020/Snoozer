@@ -10,9 +10,13 @@ export default function Alarm() {
   useEffect(() => {
     const interval = setInterval(() => {
       setHour(new Date().getHours().toString().padStart(2, 0));
-      setMinute(new Date().getHours().toString().padStart(2, 0));
-      setSecond(new Date().getHours().toString().padStart(2, 0));
+      setMinute(new Date().getMinutes().toString().padStart(2, 0));
+      setSecond(new Date().getSeconds().toString().padStart(2, 0));
     }, 1000);
+    console.log(interval);
+    console.log(hour);
+    console.log(minute);
+    console.log(second);
     // return () => {clearInterval(interval)};
   }, [second]);
 
