@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 
 export default function Alarm() {
@@ -17,12 +17,24 @@ export default function Alarm() {
     console.log(hour);
     console.log(minute);
     console.log(second);
-    // return () => {clearInterval(interval)};
+    //   clearInterval(interval);
   }, [second]);
 
   return (
     <View style={globalStyles.container}>
-      <Text>Alarm</Text>
+      <Text style={[globalStyles.text, styles.digitalClock]}>
+        {hour}:{minute}:{second}
+      </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  digitalClock: {
+    width: 180,
+    fontSize: 38,
+    borderColor: "white",
+    borderWidth: 2.5,
+    color: "black",
+  },
+});
