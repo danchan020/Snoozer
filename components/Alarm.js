@@ -25,11 +25,11 @@ export default function Alarm() {
     <View style={globalStyles.container}>
       <Text style={[globalStyles.text, styles.title]}>Hi User!</Text>
       <AnalogClock
-        colorClock="#"
-        colorNumber="#"
-        colorCenter="#"
-        colorHour="#"
-        colorMinutes="#"
+        colorClock="#414999"
+        colorNumber="#D9E4DD"
+        colorCenter="#D9E4DD"
+        colorHour="#FF8AAE"
+        colorMinutes="#F9CEEE"
         autostart={true}
         showSeconds
       />
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     width: 180,
     fontSize: 38,
     borderColor: "white",
-    borderWidth: 2.5,
+    borderWidth: 1.5,
     marginVertical: 10,
     paddingBottom: 3,
     backgroundColor: "#6770af",

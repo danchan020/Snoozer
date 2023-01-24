@@ -57,6 +57,8 @@ export default class AnalogClock extends Component {
         style={{
           backgroundColor: colorClock,
           borderRadius: size / 2,
+          borderColor: "whitesmoke",
+          borderWidth: 1.5,
           justifyContent: "center",
           alignItems: "center",
           height: size,
@@ -143,3 +145,27 @@ export default class AnalogClock extends Component {
     );
   }
 }
+
+AnalogClock.propTypes = {
+  size: PropTypes.number,
+  colorClock: PropTypes.string,
+  colorNumber: PropTypes.string,
+  colorCenter: PropTypes.string,
+  colorHour: PropTypes.string,
+  colorMinutes: PropTypes.string,
+  colorSeconds: PropTypes.string,
+  showSeconds: PropTypes.bool,
+  autostart: PropTypes.bool,
+};
+
+AnalogClock.defaultProps = {
+  size: 180,
+  showSeconds: false,
+  colorClock: "rgba(255,255,255,0.8)",
+  colorNumber: "#000",
+  colorCenter: "#000",
+  colorHour: "#000",
+  colorMinutes: "rgba(255,255,255,0.7)",
+  colorSeconds: "red",
+  autostart: false,
+};
