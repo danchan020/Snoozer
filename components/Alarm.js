@@ -24,7 +24,15 @@ export default function Alarm() {
   return (
     <View style={globalStyles.container}>
       <Text style={[globalStyles.text, styles.title]}>Hi User!</Text>
-      <AnalogClock />
+      <AnalogClock
+        colorClock="#"
+        colorNumber="#"
+        colorCenter="#"
+        colorHour="#"
+        colorMinutes="#"
+        autostart={true}
+        showSeconds
+      />
       <Text style={[globalStyles.text, styles.digitalClock]}>
         {/* {hour > 12 ? hour - 12 : hour} */}
         {hour}:{minute}:{second}
