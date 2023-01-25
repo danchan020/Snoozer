@@ -37,19 +37,19 @@ export default function Alarm() {
         {/* {hour > 12 ? hour - 12 : hour} */}
         {hour}:{minute}:{second}
       </Text>
-      <Text>Alarm name: </Text>
-      <View>
-        <View>
-          <Text>Start</Text>
-          <Text>Time</Text>
+      <Text style={globalStyles.text}>Alarm name: </Text>
+      <View style={styles.alarmContainer}>
+        <View style={styles.alarmCard}>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>Start</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>08:00</Text>
         </View>
-        <View>
-          <Text>Start</Text>
-          <Text>Time</Text>
+        <View style={styles.alarmCard}>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>Increment</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>3 min(s)</Text>
         </View>
-        <View>
-          <Text>Start</Text>
-          <Text>Time</Text>
+        <View style={styles.alarmCard}>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>Goal</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>07:00</Text>
         </View>
       </View>
     </View>
@@ -58,20 +58,33 @@ export default function Alarm() {
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: 20,
+    marginTop: 25,
+    marginBottom: 10,
     fontSize: 35,
   },
 
   digitalClock: {
     width: 180,
     fontSize: 38,
-    borderColor: "white",
+    borderColor: "whitesmoke",
     borderWidth: 1.5,
-    marginVertical: 10,
+    marginVertical: 15,
     paddingBottom: 3,
     backgroundColor: "#6770af",
   },
 
-  alarmContainer: {},
-  alarmCard: {},
+  alarmContainer: {
+    width: "90%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginVertical: 12,
+  },
+  alarmCard: {
+    width: 115,
+    paddingVertical: 5,
+    borderColor: "whitesmoke",
+    borderWidth: 1.5,
+    borderRadius: 15,
+    backgroundColor: "#6770af",
+  },
 });
