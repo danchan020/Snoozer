@@ -71,4 +71,7 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     backgroundColor: "#6770af",
   },
+
+  alarmContainer: {},
+  alarmCard: {},
 });
