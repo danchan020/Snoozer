@@ -37,6 +37,21 @@ export default function Alarm() {
         {/* {hour > 12 ? hour - 12 : hour} */}
         {hour}:{minute}:{second}
       </Text>
+      <Text>Alarm name: </Text>
+      <View>
+        <View>
+          <Text>Start</Text>
+          <Text>Time</Text>
+        </View>
+        <View>
+          <Text>Start</Text>
+          <Text>Time</Text>
+        </View>
+        <View>
+          <Text>Start</Text>
+          <Text>Time</Text>
+        </View>
+      </View>
     </View>
   );
 }
