@@ -2,6 +2,7 @@ import {
   Keyboard,
   StyleSheet,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   View,
   Text,
   TextInput,
@@ -18,6 +19,9 @@ export default function SetAlarm() {
           </Text>
           <TextInput style={styles.input} />
         </View>
+        <TouchableOpacity>
+          <Text>Set Alarm ⏰</Text>
+        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );
