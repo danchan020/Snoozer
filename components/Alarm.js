@@ -37,7 +37,7 @@ export default function Alarm() {
         {/* {hour > 12 ? hour - 12 : hour} */}
         {hour}:{minute}:{second}
       </Text>
-      <Text style={globalStyles.text}>Alarm name: </Text>
+      <Text style={globalStyles.text}>Alarm Name: </Text>
       <View style={styles.alarmContainer}>
         <View style={styles.alarmCard}>
           <Text style={[globalStyles.text, { fontSize: 22 }]}>Start</Text>

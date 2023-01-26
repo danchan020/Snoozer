@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/dev": "^0.2.2",
+    "@react-native-picker/picker": "^2.4.8",
     "@react-navigation/bottom-tabs": "^6.5.3",
     "@react-navigation/native-stack": "^6.9.8",
     "expo": "~47.0.9",
