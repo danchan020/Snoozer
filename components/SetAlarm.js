@@ -18,8 +18,10 @@ export default function SetAlarm() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={globalStyles.container}>
         <SetAlarmName />
-        <SetAlarmStart />
-        {/* <SetAlarmEnd /> */}
+        <View style={styles.container}>
+          <SetAlarmStart />
+          <SetAlarmEnd />
+        </View>
         {/* <SetIncrement /> */}
         <TouchableOpacity style={globalStyles.button}>
           <Text style={globalStyles.text}>Set Alarm ⏰</Text>
@@ -28,3 +30,7 @@ export default function SetAlarm() {
     </TouchableWithoutFeedback>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flexDirection: "row" },
+});
