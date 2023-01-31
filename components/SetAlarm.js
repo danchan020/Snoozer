@@ -23,7 +23,9 @@ export default function SetAlarm() {
           <SetAlarmEnd />
         </View>
         <SetIncrement />
-        <TouchableOpacity style={[globalStyles.button, { width: 200 }]}>
+        <TouchableOpacity
+          style={[globalStyles.button, { width: 220, borderRadius: 17 }]}
+        >
           <Text style={globalStyles.text}>Set Alarm ⏰</Text>
         </TouchableOpacity>
       </View>
@@ -32,5 +34,5 @@ export default function SetAlarm() {
 }
 
 const styles = StyleSheet.create({
-  container: { flexDirection: "row" },
+  container: { flexDirection: "row", marginTop: 35 },
 });

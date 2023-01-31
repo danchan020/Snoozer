@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 export default function SetAlarmName() {
   return (
     <View>
-      <Text style={[globalStyles.text, { marginTop: 20 }]}>Set Alarm Name</Text>
+      <Text style={[globalStyles.text, { marginTop: 50 }]}>Set Alarm Name</Text>
       <TextInput style={styles.input} />
     </View>
   );

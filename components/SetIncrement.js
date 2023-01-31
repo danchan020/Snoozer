@@ -10,13 +10,17 @@ export default function SetIncrement() {
 
   return (
     <View>
-      <Text style={globalStyles.text}> Increment (min) </Text>
+      <Text style={[globalStyles.text, { marginTop: 20, marginBottom: 10 }]}>
+        Increment (min)
+      </Text>
       <View>
         <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+          style={[
+            styles.dropdown,
+            isFocus && { borderColor: "cornflowerblue" },
+          ]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
-          iconStyle={styles.iconStyle}
           data={increment}
           maxHeight={300}
           labelField="label"
@@ -36,16 +40,14 @@ export default function SetIncrement() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    padding: 16,
-  },
   dropdown: {
+    backgroundColor: "#5b63af",
     height: 50,
-    borderColor: "gray",
+    borderColor: "darkgrey",
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
+    marginBottom: 20,
   },
   icon: {
     marginRight: 5,
@@ -60,17 +62,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   placeholderStyle: {
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: "Sriracha_400Regular",
   },
   selectedTextStyle: {
-    fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: "Sriracha_400Regular",
   },
 });
