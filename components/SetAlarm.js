@@ -23,7 +23,7 @@ export default function SetAlarm() {
           <SetAlarmEnd />
         </View>
         <SetIncrement />
-        <TouchableOpacity style={globalStyles.button}>
+        <TouchableOpacity style={[globalStyles.button, { width: 200 }]}>
           <Text style={globalStyles.text}>Set Alarm ⏰</Text>
         </TouchableOpacity>
       </View>
