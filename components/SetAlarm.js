@@ -10,6 +10,7 @@ import {
 import SetAlarmName from "./SetAlarmName";
 import SetAlarmStart from "./SetAlarmStart";
 import SetAlarmEnd from "./SetAlarmEnd";
+import SetIncrement from "./SetIncrement";
 import { globalStyles } from "../styles/global";
 
 export default function SetAlarm() {
@@ -17,8 +18,11 @@ export default function SetAlarm() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={globalStyles.container}>
         <SetAlarmName />
-        <TouchableOpacity>
-          <Text style={globalStyles.button}>Set Alarm ⏰</Text>
+        <SetAlarmStart />
+        {/* <SetAlarmEnd /> */}
+        {/* <SetIncrement /> */}
+        <TouchableOpacity style={globalStyles.button}>
+          <Text style={globalStyles.text}>Set Alarm ⏰</Text>
         </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
