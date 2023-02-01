@@ -22,7 +22,7 @@ export default function SetIncrement() {
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           data={increment}
-          maxHeight={300}
+          maxHeight={250}
           labelField="label"
           valueField="value"
           placeholder={!isFocus ? "0" : "..."}
@@ -41,25 +41,13 @@ export default function SetIncrement() {
 
 const styles = StyleSheet.create({
   dropdown: {
-    backgroundColor: "#5b63af",
+    backgroundColor: "#6770af",
     height: 50,
     borderColor: "darkgrey",
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
     marginBottom: 20,
-  },
-  icon: {
-    marginRight: 5,
-  },
-  label: {
-    position: "absolute",
-    backgroundColor: "white",
-    left: 22,
-    top: 8,
-    zIndex: 999,
-    paddingHorizontal: 8,
-    fontSize: 14,
   },
   placeholderStyle: {
     fontSize: 18,

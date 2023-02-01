@@ -21,7 +21,6 @@ export default function SetAlarmEnd() {
             color: "black",
             width: 90,
             height: 180,
-            // backgroundColor: "#414999",
             fontFamily: "Sriracha_400Regular",
             borderRadius: 25,
           }}
@@ -38,7 +37,6 @@ export default function SetAlarmEnd() {
             color: "black",
             width: 90,
             height: 180,
-            // backgroundColor: "#414999",
             fontFamily: "Sriracha_400Regular",
             borderRadius: 25,
           }}
