@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
     async function prepare() {
@@ -65,6 +65,7 @@ export default function App() {
             name="Landing"
             component={Landing}
             options={{ headerShown: false }}
+            // (screen component) higher order components are automatically passed the navigation prop
           />
           <Stack.Screen
             name="Login"
@@ -79,10 +80,11 @@ export default function App() {
               },
               headerTintColor: "#D9E4DD",
             }}
+            // (child component) requires useNavigation passed as prop or imported in component
           />
           <Stack.Screen
             name="Signup"
-            children={() => <Signup />}
+            children={() => <Signup setUser={setUser} />}
             options={{
               headerTitleStyle: {
                 fontFamily: "Sriracha_400Regular",
@@ -93,6 +95,7 @@ export default function App() {
               },
               headerTintColor: "#D9E4DD",
             }}
+            // (child component) requires useNavigation passed as prop or imported in component
           />
         </Stack.Navigator>
       )}

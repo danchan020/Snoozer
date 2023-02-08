@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
   Keyboard,
@@ -8,10 +9,28 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native";
+
 import { globalStyles } from "../styles/global";
 
-export default function Signup() {
-  // const handleSignup = () => {}
+export default function Signup({ setUser }) {
+  const navigation = useNavigation();
+
+  const handleSignup = (values) => {
+    console.log(values);
+    // fetch("http://localhost:3000/signup", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(values),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    // setUser(data);
+    // console.log(data);
+    setUser(true);
+    navigation.navigate("Home");
+  };
+  // });
+  //};  still need error handling
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -19,11 +38,11 @@ export default function Signup() {
         <Formik
           initialValues={{
             email: "",
-            name: "",
+            username: "",
             password: "",
             passwordConfirmation: "",
           }}
-          // onSubmit={handleSignup}
+          onSubmit={handleSignup}
         >
           {({
             values,
@@ -43,11 +62,13 @@ export default function Signup() {
                 value={values.email}
                 style={styles.input}
               />
-              <Text style={[globalStyles.text, { color: "black" }]}>Name</Text>
+              <Text style={[globalStyles.text, { color: "black" }]}>
+                Username
+              </Text>
               <TextInput
-                onChangeText={handleChange("name")}
-                onBlur={handleBlur("name")}
-                value={values.name}
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
                 style={styles.input}
               />
               <Text style={[globalStyles.text, { color: "black" }]}>
