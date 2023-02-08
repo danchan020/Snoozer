@@ -11,14 +11,25 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 
-export default function Login() {
+export default function Login({ setUser }) {
   // const customStyles = isFocused ? styles.inputfocused : styles.input;
 
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    navigation.navigate("Home");
-  };
+  const handleLogin = (values) => {
+    // console.log(values);
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        setUser(data);
+        navigation.navigate("Home");
+      });
+  }; //still need error handling
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -40,7 +51,6 @@ export default function Login() {
               <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
               <TextInput
                 onChangeText={handleChange("email")}
-                // After research, I still dont quite understand blur/touched in formik... may have to revisit these concepts.
                 onBlur={() => {
                   handleBlur("email");
                 }}

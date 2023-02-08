@@ -69,7 +69,7 @@ export default function App() {
           />
           <Stack.Screen
             name="Login"
-            children={() => <Login />}
+            children={() => <Login setUser={setUser} />}
             options={{
               headerTitleStyle: {
                 fontFamily: "Sriracha_400Regular",

@@ -16,21 +16,19 @@ export default function Signup({ setUser }) {
   const navigation = useNavigation();
 
   const handleSignup = (values) => {
-    console.log(values);
-    // fetch("http://localhost:3000/signup", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(values),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    // setUser(data);
-    // console.log(data);
-    setUser(true);
-    navigation.navigate("Home");
-  };
-  // });
-  //};  still need error handling
+    // console.log(values);
+    fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        setUser(data);
+        navigation.navigate("Home");
+      });
+  }; //still need error handling
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
