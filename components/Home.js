@@ -4,7 +4,7 @@ import SetAlarm from "./SetAlarm";
 import Settings from "./Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Home() {
+export default function Home({ setUser }) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -61,7 +61,7 @@ export default function Home() {
       />
       <Tab.Screen
         name="Settings"
-        component={Settings}
+        children={() => <Settings setUser={setUser} />}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
