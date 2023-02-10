@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
 } from "react-native";
+import { useState } from "react";
 import SetAlarmName from "./SetAlarmName";
 import SetAlarmStart from "./SetAlarmStart";
 import SetAlarmEnd from "./SetAlarmEnd";
@@ -15,10 +16,17 @@ import { globalStyles } from "../styles/global";
 
 export default function SetAlarm() {
   const [alarmName, setAlarmName] = useState("");
+  const [alarmStart, setAlarmStart] = useState("");
+  const [alarmEnd, setAlarmEnd] = useState("");
+  const [alarmIncrement, setAlarmIncrement] = useState("");
 
-  const handleAlarmName = (value) => {
-    setAlarmName(value);
-  };
+  const handleAlarmName = (value) => setAlarmName(value);
+  const handleAlarmStart = (value) => setAlarmStart(value);
+  const handleAlarmEnd = (value) => setAlarmEnd(value);
+  const handleAlarmIncrement = (value) => setAlarmIncrement(value);
+
+  console.log(alarmStart);
+
   // const handleAlarm = async () => {
   //   await fetch("http://localhost:3000/alarms", {
   //     method: "POST",
@@ -32,10 +40,10 @@ export default function SetAlarm() {
       <View style={globalStyles.container}>
         <SetAlarmName handleAlarmName={handleAlarmName} />
         <View style={styles.container}>
-          <SetAlarmStart />
-          <SetAlarmEnd />
+          <SetAlarmStart handleAlarmStart={handleAlarmStart} />
+          <SetAlarmEnd handleAlarmEnd={handleAlarmEnd} />
         </View>
-        <SetIncrement />
+        <SetIncrement handleAlarmIncrement={handleAlarmIncrement} />
         <TouchableOpacity
           onPress={() => handleAlarm()}
           style={[globalStyles.button, { width: 220, borderRadius: 17 }]}

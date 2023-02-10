@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global";
 import increment from "../timePicker/increment";
 import { Dropdown } from "react-native-element-dropdown";
 
-export default function SetIncrement() {
+export default function SetIncrement({ handleAlarmIncrement }) {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 

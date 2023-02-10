@@ -5,7 +5,7 @@ import hours from "../timePicker/hours";
 import minutes from "../timePicker/minutes";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarmEnd() {
+export default function SetAlarmEnd({ handleAlarmEnd }) {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
 

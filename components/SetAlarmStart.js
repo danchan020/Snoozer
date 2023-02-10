@@ -5,9 +5,11 @@ import hours from "../timePicker/hours";
 import minutes from "../timePicker/minutes";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarmStart() {
+export default function SetAlarmStart({ handleAlarmStart }) {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
+
+  handleAlarmStart(`${hour}:${minute}`);
 
   return (
     <View>
@@ -15,7 +17,9 @@ export default function SetAlarmStart() {
       <View style={styles.container}>
         <Picker
           selectedValue={hour}
-          onValueChange={(itemValue, itemIndex) => setHour(itemValue)}
+          onValueChange={(itemValue, itemIndex) => {
+            setHour(itemValue), handleAlarmStart();
+          }}
           itemStyle={{
             margin: 2,
             color: "black",
@@ -31,7 +35,9 @@ export default function SetAlarmStart() {
         </Picker>
         <Picker
           selectedValue={minute}
-          onValueChange={(itemValue, itemIndex) => setMinute(itemValue)}
+          onValueChange={(itemValue, itemIndex) => {
+            setMinute(itemValue), handleAlarmStart();
+          }}
           itemStyle={{
             margin: 2,
             color: "black",
@@ -41,8 +47,8 @@ export default function SetAlarmStart() {
             borderRadius: 25,
           }}
         >
-          {minutes.map((minnute) => (
-            <Picker.Item label={minnute.label} value={minnute.value} />
+          {minutes.map((minute) => (
+            <Picker.Item label={minute.label} value={minute.value} />
           ))}
         </Picker>
       </View>
