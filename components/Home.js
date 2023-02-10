@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home({ setUser }) {
   const Tab = createBottomTabNavigator();
   const [currentUser, setCurrentUser] = useState([]);
+  const [userAlarm, setUserAlarm] = useState([]);
 
   useEffect(() => {
     async function getUserData() {
@@ -15,7 +16,11 @@ export default function Home({ setUser }) {
       const userJSON = await response.json();
       setCurrentUser(userJSON);
     }
-    console.log(currentUser.id);
+
+    //   async function getAlarmData() {
+    //     const response = await fetch("http://localhost:3000/alarms");
+    //     const alarmJSON = await response.json();
+    //   }
   }, []);
 
   return (

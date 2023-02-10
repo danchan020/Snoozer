@@ -1,11 +1,15 @@
 import { StyleSheet, View, Text, TextInput } from "react-native";
+import { useState } from "react";
 import { globalStyles } from "../styles/global";
 
 export default function SetAlarmName() {
   return (
     <View>
       <Text style={[globalStyles.text, { marginTop: 50 }]}>Set Alarm Name</Text>
-      <TextInput style={styles.input} />
+      <TextInput
+        style={styles.input}
+        onChangeText={(value) => handleAlarmName(value)}
+      />
     </View>
   );
 }
