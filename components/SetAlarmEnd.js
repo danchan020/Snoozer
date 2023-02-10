@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import hours from "../timePicker/hours";
@@ -8,6 +8,8 @@ import { globalStyles } from "../styles/global";
 export default function SetAlarmEnd({ handleAlarmEnd }) {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
+
+  useEffect(() => handleAlarmEnd(`${hour}:${minute}`), [hour, minute]);
 
   return (
     <View>
