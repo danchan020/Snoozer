@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import hours from "../timePicker/hours";
@@ -9,7 +9,7 @@ export default function SetAlarmStart({ handleAlarmStart }) {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
 
-  handleAlarmStart(`${hour}:${minute}`);
+  useEffect(() => handleAlarmStart(`${hour}:${minute}`), [hour, minute]);
 
   return (
     <View>
@@ -17,9 +17,7 @@ export default function SetAlarmStart({ handleAlarmStart }) {
       <View style={styles.container}>
         <Picker
           selectedValue={hour}
-          onValueChange={(itemValue, itemIndex) => {
-            setHour(itemValue), handleAlarmStart();
-          }}
+          onValueChange={(itemValue, itemIndex) => setHour(itemValue)}
           itemStyle={{
             margin: 2,
             color: "black",
@@ -35,9 +33,7 @@ export default function SetAlarmStart({ handleAlarmStart }) {
         </Picker>
         <Picker
           selectedValue={minute}
-          onValueChange={(itemValue, itemIndex) => {
-            setMinute(itemValue), handleAlarmStart();
-          }}
+          onValueChange={(itemValue, itemIndex) => setMinute(itemValue)}
           itemStyle={{
             margin: 2,
             color: "black",
