@@ -3,9 +3,20 @@ import Alarm from "./Alarm";
 import SetAlarm from "./SetAlarm";
 import Settings from "./Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect, useState } from "react";
 
 export default function Home({ setUser }) {
   const Tab = createBottomTabNavigator();
+  const [currentUser, setCurrentUser] = useState([]);
+
+  useEffect(() => {
+    async function getUserData() {
+      const response = await fetch("http://localhost:3000/me");
+      const userJSON = await response.json();
+      setCurrentUser(userJSON);
+    }
+    console.log(currentUser.id);
+  }, []);
 
   return (
     <Tab.Navigator
