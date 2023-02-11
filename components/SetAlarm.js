@@ -25,8 +25,10 @@ export default function SetAlarm() {
   const handleAlarmEnd = (value) => setAlarmEnd(value);
   const handleAlarmIncrement = (value) => setAlarmIncrement(value);
 
-  console.log(alarmStart);
-  console.log(alarmEnd);
+  // console.log(alarmName);
+  // console.log(alarmStart);
+  // console.log(alarmEnd);
+  // console.log(alarmIncrement);
 
   // const handleAlarm = async () => {
   //   await fetch("http://localhost:3000/alarms", {

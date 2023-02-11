@@ -5,7 +5,6 @@ import increment from "../timePicker/increment";
 import { Dropdown } from "react-native-element-dropdown";
 
 export default function SetIncrement({ handleAlarmIncrement }) {
-  const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -26,11 +25,10 @@ export default function SetIncrement({ handleAlarmIncrement }) {
           labelField="label"
           valueField="value"
           placeholder={!isFocus ? "0" : "..."}
-          value={value}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={(item) => {
-            setValue(item.value);
+            handleAlarmIncrement(item.value);
             setIsFocus(false);
           }}
         />
