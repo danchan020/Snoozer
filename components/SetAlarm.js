@@ -14,7 +14,8 @@ import SetAlarmEnd from "./SetAlarmEnd";
 import SetIncrement from "./SetIncrement";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarm() {
+export default function SetAlarm({ currentUser }) {
+  const [alarm, setAlarm] = useState({});
   const [alarmName, setAlarmName] = useState("");
   const [alarmStart, setAlarmStart] = useState("");
   const [alarmEnd, setAlarmEnd] = useState("");
@@ -29,14 +30,24 @@ export default function SetAlarm() {
   // console.log(alarmStart);
   // console.log(alarmEnd);
   // console.log(alarmIncrement);
+  console.log(currentUser);
 
-  // const handleAlarm = async () => {
-  //   await fetch("http://localhost:3000/alarms", {
-  //     method: "POST",
-  //     header: { "Content-Type": "application/json" },
-  //     // body: JSON.stringify
-  //   });
-  // };
+  const handleAlarm = async () => {
+    if (!alarm) {
+      await fetch("http://localhost:3000/alarms", {
+        method: "POST",
+        header: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: currentUser.id,
+          alarm_name: alarmName,
+          alarm_start: alarmStart,
+          alarm_end: alarmEnd,
+          alarm_increment: alarmIncrement,
+          is_disabled: false,
+        }),
+      });
+    }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
