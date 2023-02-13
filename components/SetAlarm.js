@@ -1,4 +1,5 @@
 import {
+  Alert,
   Keyboard,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -45,6 +46,20 @@ export default function SetAlarm({ currentUser }) {
           is_disabled: false,
         }),
       });
+      Alert.alert("Alarm has been created");
+    } else {
+      await fetch(`http://localhost:3000/alarms/${alarm.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          alarm_name: alarmName,
+          alarm_start: alarmStart,
+          alarm_end: alarmEnd,
+          alarm_increment: alarmIncrement,
+          is_disabled: false,
+        }),
+      });
+      Alert.alert("Alarm has been updated");
     }
   };
 
