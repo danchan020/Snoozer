@@ -15,8 +15,7 @@ import SetAlarmEnd from "./SetAlarmEnd";
 import SetIncrement from "./SetIncrement";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarm({ currentUser }) {
-  const [alarm, setAlarm] = useState({});
+export default function SetAlarm({ currentUser, userAlarm, setRefresh }) {
   const [alarmName, setAlarmName] = useState("");
   const [alarmStart, setAlarmStart] = useState("");
   const [alarmEnd, setAlarmEnd] = useState("");
@@ -31,12 +30,14 @@ export default function SetAlarm({ currentUser }) {
   // console.log(alarmStart);
   // console.log(alarmEnd);
   // console.log(alarmIncrement);
+  console.log(currentUser);
+  console.log(userAlarm);
 
   const handleAlarm = async () => {
-    if (!alarm) {
+    if (!userAlarm) {
       await fetch("http://localhost:3000/alarms", {
         method: "POST",
-        header: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           user_id: currentUser.id,
           alarm_name: alarmName,
@@ -46,9 +47,10 @@ export default function SetAlarm({ currentUser }) {
           is_disabled: false,
         }),
       });
+      setRefresh((refresh) => !refresh);
       Alert.alert("Alarm has been created");
     } else {
-      await fetch(`http://localhost:3000/alarms/${alarm.id}`, {
+      await fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -59,6 +61,7 @@ export default function SetAlarm({ currentUser }) {
           is_disabled: false,
         }),
       });
+      setRefresh((refresh) => !refresh);
       Alert.alert("Alarm has been updated");
     }
   };

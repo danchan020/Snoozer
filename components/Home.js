@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
 
 export default function Home({ setUser }) {
   const Tab = createBottomTabNavigator();
+  const [refresh, setRefresh] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
+  const [alarmData, setAlarmData] = useState([]);
   const [userAlarm, setUserAlarm] = useState([]);
 
   useEffect(() => {
@@ -16,12 +18,17 @@ export default function Home({ setUser }) {
       const userJSON = await response.json();
       setCurrentUser(userJSON);
     }
+    getUserData();
 
-    //   async function getAlarmData() {
-    //     const response = await fetch("http://localhost:3000/alarms");
-    //     const alarmJSON = await response.json();
-    //   }
-  }, []);
+    async function getAlarmData() {
+      const response = await fetch("http://localhost:3000/alarms");
+      const alarmJSON = await response.json();
+      setAlarmData(alarmJSON);
+    }
+    getAlarmData();
+
+    setUserAlarm(alarmData.find((alarm) => alarm.user_id === currentUser.id));
+  }, [refresh]);
 
   return (
     <Tab.Navigator
@@ -63,7 +70,13 @@ export default function Home({ setUser }) {
       />
       <Tab.Screen
         name="Set Alarm"
-        children={() => <SetAlarm currentUser={currentUser} />}
+        children={() => (
+          <SetAlarm
+            currentUser={currentUser}
+            userAlarm={userAlarm}
+            setRefresh={setRefresh}
+          />
+        )}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
