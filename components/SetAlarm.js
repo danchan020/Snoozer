@@ -30,7 +30,6 @@ export default function SetAlarm({ currentUser }) {
   // console.log(alarmStart);
   // console.log(alarmEnd);
   // console.log(alarmIncrement);
-  console.log(currentUser);
 
   const handleAlarm = async () => {
     if (!alarm) {
