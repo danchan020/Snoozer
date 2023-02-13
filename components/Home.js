@@ -56,7 +56,7 @@ export default function Home({ setUser }) {
     >
       <Tab.Screen
         name="Alarm"
-        component={Alarm}
+        children={() => <Alarm currentUser={currentUser} userAlarm={userAlarm} />}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",

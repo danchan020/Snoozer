@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 import AnalogClock from "./AnalogClock";
 
-export default function Alarm() {
+export default function Alarm({ currentUser, userAlarm }) {
   const [second, setSecond] = useState("");
   const [minute, setMinute] = useState("");
   const [hour, setHour] = useState("");
@@ -23,7 +23,9 @@ export default function Alarm() {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={[globalStyles.text, styles.title]}>Hi User!</Text>
+      <Text style={[globalStyles.text, styles.title]}>
+        Hello {currentUser.username}!
+      </Text>
       <AnalogClock
         colorClock="#414999"
         colorNumber="#D9E4DD"
@@ -34,22 +36,27 @@ export default function Alarm() {
         showSeconds
       />
       <Text style={[globalStyles.text, styles.digitalClock]}>
-        {/* {hour > 12 ? hour - 12 : hour} */}
         {hour}:{minute}:{second}
       </Text>
-      <Text style={globalStyles.text}>Alarm Name: </Text>
+      <Text style={globalStyles.text}>Alarm Name: {userAlarm.alarm_name} </Text>
       <View style={styles.alarmContainer}>
         <View style={styles.alarmCard}>
           <Text style={[globalStyles.text, { fontSize: 22 }]}>Start</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>08:00</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>
+            {userAlarm.alarm_start}
+          </Text>
         </View>
         <View style={styles.alarmCard}>
           <Text style={[globalStyles.text, { fontSize: 22 }]}>Increment</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>3 min(s)</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>
+            {userAlarm.alarm_increment} min(s)
+          </Text>
         </View>
         <View style={styles.alarmCard}>
           <Text style={[globalStyles.text, { fontSize: 22 }]}>Goal</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>07:00</Text>
+          <Text style={[globalStyles.text, { fontSize: 22 }]}>
+            {userAlarm.alarm_end}
+          </Text>
         </View>
       </View>
     </View>
