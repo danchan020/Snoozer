@@ -1,9 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
+import * as Notifications from "expo-notifications";
 import * as SplashScreen from "expo-splash-screen";
-import Landing from "./components/Landing";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Home from "./components/Home";
 import * as Font from "expo-font";
 import {
   Inter_400Regular,
@@ -11,12 +8,23 @@ import {
   Alegreya_400Regular,
   Sriracha_400Regular,
 } from "@expo-google-fonts/dev";
+import Landing from "./components/Landing";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Home from "./components/Home";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Stack = createNativeStackNavigator();
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   const [appIsReady, setAppIsReady] = useState(false);
   const [user, setUser] = useState(false);
 

@@ -38,27 +38,37 @@ export default function Alarm({ currentUser, userAlarm }) {
       <Text style={[globalStyles.text, styles.digitalClock]}>
         {hour}:{minute}:{second}
       </Text>
-      <Text style={globalStyles.text}>Alarm Name: {userAlarm.alarm_name} </Text>
-      <View style={styles.alarmContainer}>
-        <View style={styles.alarmCard}>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>Start</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>
-            {userAlarm.alarm_start}
+      {userAlarm ? (
+        <>
+          <Text style={globalStyles.text}>
+            Alarm Name: {userAlarm.alarm_name}{" "}
           </Text>
-        </View>
-        <View style={styles.alarmCard}>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>Increment</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>
-            {userAlarm.alarm_increment} min(s)
-          </Text>
-        </View>
-        <View style={styles.alarmCard}>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>Goal</Text>
-          <Text style={[globalStyles.text, { fontSize: 22 }]}>
-            {userAlarm.alarm_end}
-          </Text>
-        </View>
-      </View>
+          <View style={styles.alarmContainer}>
+            <View style={styles.alarmCard}>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>Start</Text>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>
+                {userAlarm.alarm_start}
+              </Text>
+            </View>
+            <View style={styles.alarmCard}>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>
+                Increment
+              </Text>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>
+                {userAlarm.alarm_increment} min(s)
+              </Text>
+            </View>
+            <View style={styles.alarmCard}>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>Goal</Text>
+              <Text style={[globalStyles.text, { fontSize: 22 }]}>
+                {userAlarm.alarm_end}
+              </Text>
+            </View>
+          </View>
+        </>
+      ) : (
+        <Text style={globalStyles.text}>Please set your alarm</Text>
+      )}
     </View>
   );
 }

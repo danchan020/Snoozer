@@ -28,6 +28,8 @@ export default function Home({ setUser }) {
     getAlarmData();
 
     setUserAlarm(alarmData.find((alarm) => alarm.user_id === currentUser.id));
+
+    console.log(userAlarm.updated_at);
   }, [refresh]);
 
   return (
@@ -56,7 +58,9 @@ export default function Home({ setUser }) {
     >
       <Tab.Screen
         name="Alarm"
-        children={() => <Alarm currentUser={currentUser} userAlarm={userAlarm} />}
+        children={() => (
+          <Alarm currentUser={currentUser} userAlarm={userAlarm} />
+        )}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
