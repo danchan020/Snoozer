@@ -38,6 +38,27 @@ export default function Home({ user, setUser, setNotificationTitle }) {
       console.log(userAlarm.alarm_end.substring(0, 2));
       console.log(userAlarm.alarm_start.substring(3, 5));
       console.log(userAlarm.alarm_end.substring(3, 5));
+
+      // create a variable for difference in hours and a variable for difference in minutes
+
+      let differenceHours =
+        userAlarm.alarm_start.substring(3, 5) ===
+        userAlarm.alarm_end.substring(3, 5)
+          ? parseInt(userAlarm.alarm_start.substring(0, 2)) -
+            parseInt(userAlarm.alarm_end.substring(0, 2))
+          : parseInt(userAlarm.alarm_start.substring(0, 2)) -
+            parseInt(userAlarm.alarm_end.substring(0, 2)) -
+            1;
+
+      differenceHours =
+        parseInt(userAlarm.alarm_start.substring(3, 5)) >
+        parseInt(userAlarm.alarm_end.substring(3, 5))
+          ? differenceHours + 1
+          : differenceHours;
+
+      console.log(differenceHours);
+
+      let differenceMinutes;
     }
 
     // create an alarm array, should include the day and time of the user's first alarm
