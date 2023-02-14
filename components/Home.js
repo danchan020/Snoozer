@@ -26,6 +26,8 @@ export default function Home({ user, setUser, setNotificationTitle }) {
       setLoaded(true);
     }
     getAlarmData();
+
+    // console.log(userAlarm);
     // https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
     // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-45.php (hours) substring( 0 , 2 )
     // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-44.php (minutes) substring( 3 , 5 )
@@ -34,31 +36,66 @@ export default function Home({ user, setUser, setNotificationTitle }) {
     // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
 
     if (loaded) {
-      console.log(userAlarm.alarm_start.substring(0, 2));
-      console.log(userAlarm.alarm_end.substring(0, 2));
-      console.log(userAlarm.alarm_start.substring(3, 5));
-      console.log(userAlarm.alarm_end.substring(3, 5));
+      // console.log(userAlarm.alarm_start.substring(0, 2));
+      // console.log(userAlarm.alarm_end.substring(0, 2));
+      // console.log(userAlarm.alarm_start.substring(3, 5));
+      // console.log(userAlarm.alarm_end.substring(3, 5));
 
       // create a variable for difference in hours and a variable for difference in minutes
+      // if minutes are equal then hour start - hour end
+      // if start minutes are greater than end minutes than hour start - hour end / subtract start minutes from end minutes
+      // if start minutes are less than end minutes than hour start - hour end - 1hr / add start and end minutes together
 
-      let differenceHours =
-        userAlarm.alarm_start.substring(3, 5) ===
-        userAlarm.alarm_end.substring(3, 5)
-          ? parseInt(userAlarm.alarm_start.substring(0, 2)) -
-            parseInt(userAlarm.alarm_end.substring(0, 2))
-          : parseInt(userAlarm.alarm_start.substring(0, 2)) -
-            parseInt(userAlarm.alarm_end.substring(0, 2)) -
-            1;
+      let differenceHours;
+      let differenceMinutes;
 
-      differenceHours =
+      if (
+        parseInt(userAlarm.alarm_start.substring(3, 5)) ===
+        parseInt(userAlarm.alarm_end.substring(3, 5))
+      ) {
+        differenceHours =
+          parseInt(userAlarm.alarm_start.substring(0, 2)) -
+          parseInt(userAlarm.alarm_end.substring(0, 2));
+        differenceMinutes = 0;
+      } else if (
         parseInt(userAlarm.alarm_start.substring(3, 5)) >
         parseInt(userAlarm.alarm_end.substring(3, 5))
-          ? differenceHours + 1
-          : differenceHours;
+      ) {
+        differenceHours =
+          parseInt(userAlarm.alarm_start.substring(0, 2)) -
+          parseInt(userAlarm.alarm_end.substring(0, 2));
+        differenceMinutes =
+          parseInt(userAlarm.alarm_start.substring(3, 5)) -
+          parseInt(userAlarm.alarm_end.substring(3, 5));
+      } else if (
+        parseInt(userAlarm.alarm_start.substring(3, 5)) <
+        parseInt(userAlarm.alarm_end.substring(3, 5))
+      ) {
+        differenceHours =
+          parseInt(userAlarm.alarm_start.substring(0, 2)) -
+          parseInt(userAlarm.alarm_end.substring(0, 2)) -
+          1;
+        differenceMinutes =
+          parseInt(userAlarm.alarm_start.substring(3, 5)) +
+          parseInt(userAlarm.alarm_end.substring(3, 5));
+      }
+      // let differenceHours =
+      //   userAlarm.alarm_start.substring(3, 5) ===
+      //   userAlarm.alarm_end.substring(3, 5)
+      //     ? parseInt(userAlarm.alarm_start.substring(0, 2)) -
+      //       parseInt(userAlarm.alarm_end.substring(0, 2))
+      //     : parseInt(userAlarm.alarm_start.substring(0, 2)) -
+      //       parseInt(userAlarm.alarm_end.substring(0, 2)) -
+      //       1;
+
+      // differenceHours =
+      //   parseInt(userAlarm.alarm_start.substring(3, 5)) >
+      //   parseInt(userAlarm.alarm_end.substring(3, 5))
+      //     ? differenceHours + 1
+      //     : differenceHours;
 
       console.log(differenceHours);
-
-      let differenceMinutes;
+      console.log(differenceMinutes);
     }
 
     // create an alarm array, should include the day and time of the user's first alarm
