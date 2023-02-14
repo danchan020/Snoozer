@@ -5,7 +5,7 @@ import Settings from "./Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useState } from "react";
 
-export default function Home({ user, setUser }) {
+export default function Home({ user, setUser, setNotificationTitle }) {
   const Tab = createBottomTabNavigator();
   const [refresh, setRefresh] = useState(false);
   const [userAlarm, setUserAlarm] = useState([]);
@@ -24,10 +24,25 @@ export default function Home({ user, setUser }) {
       await setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
     }
     getAlarmData();
+
+    // https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
+    // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-45.php (hours)
+    // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-44.php (minutes)
+
+    // first we need some math to calculate the start of the alarm to the end of the alarm
+    // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
+
+    // create an alarm array, should include the day and time of the user's first alarm
+
+    // want to create the alarm for today
+
+    // want to create the alarm for the next day
+    const tomorrow = new Date(userAlarm.updated_at);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    console.log(tomorrow);
   }, [refresh]);
 
-  console.log(user);
-  console.log(userAlarm);
+  // console.log(userAlarm.updated_at);
 
   return (
     <Tab.Navigator

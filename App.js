@@ -27,6 +27,8 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   const [appIsReady, setAppIsReady] = useState(false);
   const [user, setUser] = useState(false);
+  const [notificationTitle, setNotificationTitle] = useState("");
+  const [alarmTrigger, setAlarmTrigger] = useState("");
 
   useEffect(() => {
     async function prepare() {
@@ -63,7 +65,13 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
-            children={() => <Home user={user} setUser={setUser} />}
+            children={() => (
+              <Home
+                user={user}
+                setUser={setUser}
+                setNotificationTitle={setNotificationTitle}
+              />
+            )}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
