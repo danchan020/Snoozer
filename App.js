@@ -63,7 +63,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
-            children={() => <Home setUser={setUser} />}
+            children={() => <Home user={user} setUser={setUser} />}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

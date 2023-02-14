@@ -5,32 +5,29 @@ import Settings from "./Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useState } from "react";
 
-export default function Home({ setUser }) {
+export default function Home({ user, setUser }) {
   const Tab = createBottomTabNavigator();
   const [refresh, setRefresh] = useState(false);
-  const [currentUser, setCurrentUser] = useState([]);
-  const [alarmData, setAlarmData] = useState([]);
   const [userAlarm, setUserAlarm] = useState([]);
 
   useEffect(() => {
-    async function getUserData() {
-      const response = await fetch("http://localhost:3000/me");
-      const userJSON = await response.json();
-      setCurrentUser(userJSON);
-    }
-    getUserData();
+    // async function getUserData() {
+    //   const response = await fetch("http://localhost:3000/me");
+    //   const userJSON = await response.json();
+    //   setCurrentUser(userJSON);
+    // }
+    // getUserData();
 
     async function getAlarmData() {
       const response = await fetch("http://localhost:3000/alarms");
       const alarmJSON = await response.json();
-      setAlarmData(alarmJSON);
+      await setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
     }
     getAlarmData();
-
-    setUserAlarm(alarmData.find((alarm) => alarm.user_id === currentUser.id));
-
-    console.log(userAlarm.updated_at);
   }, [refresh]);
+
+  console.log(user);
+  console.log(userAlarm);
 
   return (
     <Tab.Navigator
@@ -58,9 +55,7 @@ export default function Home({ setUser }) {
     >
       <Tab.Screen
         name="Alarm"
-        children={() => (
-          <Alarm currentUser={currentUser} userAlarm={userAlarm} />
-        )}
+        children={() => <Alarm user={user} userAlarm={userAlarm} />}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
@@ -75,11 +70,7 @@ export default function Home({ setUser }) {
       <Tab.Screen
         name="Set Alarm"
         children={() => (
-          <SetAlarm
-            currentUser={currentUser}
-            userAlarm={userAlarm}
-            setRefresh={setRefresh}
-          />
+          <SetAlarm user={user} userAlarm={userAlarm} setRefresh={setRefresh} />
         )}
         options={{
           headerTitleStyle: {

@@ -15,7 +15,7 @@ import SetAlarmEnd from "./SetAlarmEnd";
 import SetIncrement from "./SetIncrement";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarm({ currentUser, userAlarm, setRefresh }) {
+export default function SetAlarm({ user, userAlarm, setRefresh }) {
   const [alarmName, setAlarmName] = useState("");
   const [alarmStart, setAlarmStart] = useState("");
   const [alarmEnd, setAlarmEnd] = useState("");
@@ -30,8 +30,8 @@ export default function SetAlarm({ currentUser, userAlarm, setRefresh }) {
   // console.log(alarmStart);
   // console.log(alarmEnd);
   // console.log(alarmIncrement);
-  console.log(currentUser);
-  console.log(userAlarm);
+  // console.log(currentUser);
+  // console.log(userAlarm);
 
   const handleAlarm = async () => {
     if (!userAlarm) {
@@ -39,7 +39,7 @@ export default function SetAlarm({ currentUser, userAlarm, setRefresh }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          user_id: currentUser.id,
+          user_id: user.id,
           alarm_name: alarmName,
           alarm_start: alarmStart,
           alarm_end: alarmEnd,
