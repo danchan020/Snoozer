@@ -112,9 +112,30 @@ export default function Home({ user, setUser, setNotificationTitle }) {
         let minute;
 
         // conditional of minutes at 00
-        hour = parseInt(userAlarm.alarm_start.substring(0, 2)) - 1;
-        minute = 60 - userAlarm.alarm_increment * (i - 1);
-        console.log(minute);
+        if (parseInt(userAlarm.alarm_start.substring(3, 5)) === 0) {
+          hour = parseInt(userAlarm.alarm_start.substring(0, 2)) - 1;
+          minute = 60 - userAlarm.alarm_increment * (i - 1);
+          console.log(hour, minute);
+          // loop while j is less than difference in hours?
+          for (
+            let j = 1;
+            j <
+            parseInt(userAlarm.alarm_start.substring(0, 2)) -
+              parseInt(userAlarm.alarm_end.substring(0, 2));
+            j++
+          ) {
+            // if minutes are less than 0 , decrement hour and reset minutes to 60
+            if (minute < 0) {
+              hour--;
+              minute = 60;
+            }
+          }
+          // set the alarm array object with each new date and time and push into alarm array
+          // alarmArray.push({
+          //   date: JSON.stringify(nextDay).substring(1, 11),
+          //   time: `${hour}:${minute}`
+          // })
+        }
       }
     }
   }, [refresh, loaded]);
