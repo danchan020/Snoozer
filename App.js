@@ -30,6 +30,9 @@ export default function App() {
   const [notificationTitle, setNotificationTitle] = useState("");
   const [alarmTrigger, setAlarmTrigger] = useState("");
 
+  console.log(notificationTitle);
+  console.log(alarmTrigger);
+
   useEffect(() => {
     async function prepare() {
       try {

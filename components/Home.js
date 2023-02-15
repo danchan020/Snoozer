@@ -184,7 +184,8 @@ export default function Home({
       const today =
         String(new Date().getFullYear()) +
         "-" +
-        String(new Date().getMonth()).padStart(2, "0") +
+        // today I learned that JavaScript Date months begin at 0 and end at 11
+        String(new Date().getMonth() + 1).padStart(2, "0") +
         "-" +
         String(new Date().getDate());
 
@@ -192,8 +193,13 @@ export default function Home({
       // console.log(alarmArray);
 
       const currentAlarm = alarmArray.find((alarm) => alarm.date === today);
+      // currentAlarm will be undefined on the first day where the alarm is set
       console.log(currentAlarm);
-      // setAlarmTrigger(currentAlarm)
+      if (currentAlarm) {
+        setAlarmTrigger(currentAlarm);
+      } else {
+        setAlarmTrigger(null);
+      }
     }
   }, [refresh, loaded]);
 
