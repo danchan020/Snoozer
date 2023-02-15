@@ -70,6 +70,7 @@ export default function App() {
                 user={user}
                 setUser={setUser}
                 setNotificationTitle={setNotificationTitle}
+                setAlarmTrigger={setAlarmTrigger}
               />
             )}
             options={{ headerShown: false }}

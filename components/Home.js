@@ -5,7 +5,12 @@ import Settings from "./Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useState } from "react";
 
-export default function Home({ user, setUser, setNotificationTitle }) {
+export default function Home({
+  user,
+  setUser,
+  setNotificationTitle,
+  setAlarmTrigger,
+}) {
   const Tab = createBottomTabNavigator();
   const [refresh, setRefresh] = useState(false);
   const [userAlarm, setUserAlarm] = useState({});
@@ -36,6 +41,8 @@ export default function Home({ user, setUser, setNotificationTitle }) {
     // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
 
     if (loaded) {
+      setNotificationTitle(userAlarm.alarm_name);
+
       // create a variable for difference in hours and a variable for difference in minutes
       // if minutes are equal then hour start - hour end
       // if start minutes are greater than end minutes than hour start - hour end / subtract start minutes from end minutes
@@ -98,7 +105,7 @@ export default function Home({ user, setUser, setNotificationTitle }) {
       ];
 
       // console.log(alarmArray);
-      console.log(userAlarm.alarm_start);
+      // console.log(userAlarm.alarm_start);
 
       // want to create the alarms for all days of an alarm's total days
       // create a for loop that ends when index reaches total days
@@ -173,6 +180,20 @@ export default function Home({ user, setUser, setNotificationTitle }) {
         }
       }
       // create today date, find date in the set alarm array that matches today date, and set the trigger to that alarm array object
+
+      const today =
+        String(new Date().getFullYear()) +
+        "-" +
+        String(new Date().getMonth()).padStart(2, "0") +
+        "-" +
+        String(new Date().getDate());
+
+      // console.log(today);
+      // console.log(alarmArray);
+
+      const currentAlarm = alarmArray.find((alarm) => alarm.date === today);
+      console.log(currentAlarm);
+      // setAlarmTrigger(currentAlarm)
     }
   }, [refresh, loaded]);
 
