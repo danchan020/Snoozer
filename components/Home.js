@@ -28,23 +28,18 @@ export default function Home({ user, setUser, setNotificationTitle }) {
     getAlarmData();
 
     // console.log(userAlarm);
-    // https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
-    // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-45.php (hours) substring( 0 , 2 )
-    // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-44.php (minutes) substring( 3 , 5 )
 
-    // first we need some math to calculate the start of the alarm to the end of the alarm
+    // (hours) substring( 0 , 2 )
+    // (minutes) substring( 3 , 5 )
+
+    // first we need some math to calculate the hours and minutes from the start of the alarm to the end of the alarm
     // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
 
     if (loaded) {
-      // console.log(userAlarm.alarm_start.substring(0, 2));
-      // console.log(userAlarm.alarm_end.substring(0, 2));
-      // console.log(userAlarm.alarm_start.substring(3, 5));
-      // console.log(userAlarm.alarm_end.substring(3, 5));
-
       // create a variable for difference in hours and a variable for difference in minutes
       // if minutes are equal then hour start - hour end
       // if start minutes are greater than end minutes than hour start - hour end / subtract start minutes from end minutes
-      // if start minutes are less than end minutes than hour start - hour end - 1hr / add start and end minutes together
+      // if start minutes are less than end minutes than hour start - hour end - 1hr / 60 subtract (end - start) minutes
 
       let differenceHours;
       let differenceMinutes;
@@ -76,26 +71,17 @@ export default function Home({ user, setUser, setNotificationTitle }) {
           parseInt(userAlarm.alarm_end.substring(0, 2)) -
           1;
         differenceMinutes =
-          parseInt(userAlarm.alarm_start.substring(3, 5)) +
-          parseInt(userAlarm.alarm_end.substring(3, 5));
+          60 -
+          (parseInt(userAlarm.alarm_end.substring(3, 5)) -
+            parseInt(userAlarm.alarm_start.substring(3, 5)));
       }
-      // let differenceHours =
-      //   userAlarm.alarm_start.substring(3, 5) ===
-      //   userAlarm.alarm_end.substring(3, 5)
-      //     ? parseInt(userAlarm.alarm_start.substring(0, 2)) -
-      //       parseInt(userAlarm.alarm_end.substring(0, 2))
-      //     : parseInt(userAlarm.alarm_start.substring(0, 2)) -
-      //       parseInt(userAlarm.alarm_end.substring(0, 2)) -
-      //       1;
-
-      // differenceHours =
-      //   parseInt(userAlarm.alarm_start.substring(3, 5)) >
-      //   parseInt(userAlarm.alarm_end.substring(3, 5))
-      //     ? differenceHours + 1
-      //     : differenceHours;
-
       console.log(differenceHours);
       console.log(differenceMinutes);
+
+      let totalMins = differenceHours * 60 + differenceMinutes;
+      console.log(totalMins);
+      let totalDays = Math.floor(totalMins / userAlarm.alarm_increment) + 1;
+      console.log(totalDays);
     }
 
     // create an alarm array, should include the day and time of the user's first alarm
@@ -105,7 +91,7 @@ export default function Home({ user, setUser, setNotificationTitle }) {
     // want to create the alarm trigger for the next day
     const tomorrow = new Date(userAlarm.updated_at);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    // console.log(tomorrow);
+    // console.log(JSON.stringify(tomorrow));
   }, [refresh, loaded]);
 
   // console.log(userAlarm.updated_at);
