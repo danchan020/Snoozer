@@ -83,29 +83,39 @@ export default function Home({ user, setUser, setNotificationTitle }) {
       // console.log(differenceMinutes);
       // console.log(totalMins);
       // console.log(totalDays);
-    }
 
-    // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
-    const tomorrow = new Date(userAlarm.updated_at);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    // console.log(tomorrow);
-    // tomorrow is a date object
+      // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
+      const tomorrow = new Date(userAlarm.updated_at);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      // console.log(tomorrow);
+      // tomorrow is a date object
 
-    let alarmArray = [
-      {
-        date: JSON.stringify(tomorrow).substring(1, 11),
-        time: userAlarm.alarm_start,
-      },
-    ];
+      let alarmArray = [
+        {
+          date: JSON.stringify(tomorrow).substring(1, 11),
+          time: userAlarm.alarm_start,
+        },
+      ];
 
-    // console.log(alarmArray);
+      // console.log(alarmArray);
+      console.log(userAlarm.alarm_start);
 
-    // want to create the alarms for all days of an alarm's total days
-    // create a for loop that ends when index reaches total days
+      // want to create the alarms for all days of an alarm's total days
+      // create a for loop that ends when index reaches total days
 
-    for (let i = 1; i <= totalDays; i++) {
-      const nextDay = new Date(userAlarm.updated_at);
-      nextDay.setDate(nextDay.getDate() + i);
+      for (let i = 2; i <= totalDays; i++) {
+        const nextDay = new Date(userAlarm.updated_at);
+        nextDay.setDate(nextDay.getDate() + i);
+
+        // need the hour and time to add within time property in alarm array
+        let hour;
+        let minute;
+
+        // conditional of minutes at 00
+        hour = parseInt(userAlarm.alarm_start.substring(0, 2)) - 1;
+        minute = 60 - userAlarm.alarm_increment * (i - 1);
+        console.log(minute);
+      }
     }
   }, [refresh, loaded]);
 
