@@ -75,23 +75,32 @@ export default function Home({ user, setUser, setNotificationTitle }) {
           (parseInt(userAlarm.alarm_end.substring(3, 5)) -
             parseInt(userAlarm.alarm_start.substring(3, 5)));
       }
-      console.log(differenceHours);
-      console.log(differenceMinutes);
 
       let totalMins = differenceHours * 60 + differenceMinutes;
-      console.log(totalMins);
       let totalDays = Math.floor(totalMins / userAlarm.alarm_increment) + 1;
-      console.log(totalDays);
+
+      // console.log(differenceHours);
+      // console.log(differenceMinutes);
+      // console.log(totalMins);
+      // console.log(totalDays);
     }
 
-    // create an alarm array, should include the day and time of the user's first alarm
-
-    // want to create the alarm trigger for today
-
-    // want to create the alarm trigger for the next day
+    // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
     const tomorrow = new Date(userAlarm.updated_at);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    // console.log(JSON.stringify(tomorrow));
+    // console.log(tomorrow);
+    // tomorrow is a date object
+
+    let alarmArray = [
+      {
+        date: JSON.stringify(tomorrow).substring(1, 11),
+        time: userAlarm.alarm_start,
+      },
+    ];
+
+    console.log(alarmArray);
+
+    // want to create the alarm trigger for the next day
   }, [refresh, loaded]);
 
   // console.log(userAlarm.updated_at);
