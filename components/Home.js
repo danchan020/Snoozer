@@ -117,6 +117,7 @@ export default function Home({ user, setUser, setNotificationTitle }) {
           minute = 60 - userAlarm.alarm_increment * (i - 1);
           // loop while j is less than difference in hours?
           for (
+            // constant can be set at 1 because hour variable has already subtracted 1 hour
             let j = 1;
             j <
             parseInt(userAlarm.alarm_start.substring(0, 2)) -
@@ -148,7 +149,8 @@ export default function Home({ user, setUser, setNotificationTitle }) {
 
           // loop while j is less than difference in hours?
           for (
-            let j = 1;
+            // set constant at 0 because hour variable has no changed yet
+            let j = 0;
             j <
             parseInt(userAlarm.alarm_start.substring(0, 2)) -
               parseInt(userAlarm.alarm_end.substring(0, 2));
@@ -160,9 +162,17 @@ export default function Home({ user, setUser, setNotificationTitle }) {
               minute = 60 + minute;
             }
           }
-          console.log(hour, minute);
+          // console.log(hour, minute);
+          // set the alarm array object with each new date and time and push into alarm array
+          alarmArray.push({
+            date: JSON.stringify(nextDay).substring(1, 11),
+            time: `${hour.toString().padStart(2, 0)}:${minute
+              .toString()
+              .padStart(2, 0)}`,
+          });
         }
       }
+      // create today date, find date in the set alarm array that matches today date, and set the trigger to that alarm array object
     }
   }, [refresh, loaded]);
 
