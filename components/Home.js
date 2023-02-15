@@ -98,9 +98,15 @@ export default function Home({ user, setUser, setNotificationTitle }) {
       },
     ];
 
-    console.log(alarmArray);
+    // console.log(alarmArray);
 
-    // want to create the alarm trigger for the next day
+    // want to create the alarms for all days of an alarm's total days
+    // create a for loop that ends when index reaches total days
+
+    for (let i = 1; i <= totalDays; i++) {
+      const nextDay = new Date(userAlarm.updated_at);
+      nextDay.setDate(nextDay.getDate() + i);
+    }
   }, [refresh, loaded]);
 
   // console.log(userAlarm.updated_at);
