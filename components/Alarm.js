@@ -40,7 +40,9 @@ export default function Alarm({ user, userAlarm, allAlarms, alarmTomorrow }) {
       </Text>
       {userAlarm ? (
         <>
-          <Text style={globalStyles.text}>
+          <Text
+            style={[globalStyles.text, { marginVertical: 8, fontSize: 21 }]}
+          >
             Alarm Name: {userAlarm.alarm_name}{" "}
           </Text>
           <View style={styles.alarmContainer}>
@@ -65,11 +67,38 @@ export default function Alarm({ user, userAlarm, allAlarms, alarmTomorrow }) {
               </Text>
             </View>
           </View>
-          <Text style={globalStyles.text}>
+          <Text
+            style={[
+              globalStyles.text,
+              { paddingVertical: 5, marginTop: 5, fontSize: 21 },
+            ]}
+          >
             Tomorrow's alarm: {alarmTomorrow ? alarmTomorrow.date : "Everyday"}{" "}
             at {alarmTomorrow ? alarmTomorrow.time : userAlarm.alarm_end}
           </Text>
-          {alarmTomorrow ? <View></View> : <Text></Text>}
+          {alarmTomorrow ? (
+            <View>
+              <Text
+                style={[
+                  globalStyles.text,
+                  { paddingVertical: 5, fontSize: 21 },
+                ]}
+              >
+                This is day {allAlarms.indexOf(alarmTomorrow)} of your progress.
+              </Text>
+              <Text
+                style={[
+                  globalStyles.text,
+                  { paddingVertical: 5, fontSize: 21 },
+                ]}
+              >
+                {allAlarms.length - allAlarms.indexOf(alarmTomorrow)} day(s)
+                left before you reach your goal!
+              </Text>
+            </View>
+          ) : (
+            <Text style={globalStyles.text}>You have reached your goal!</Text>
+          )}
         </>
       ) : (
         <Text style={globalStyles.text}>Please set your alarm</Text>
