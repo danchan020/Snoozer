@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 import AnalogClock from "./AnalogClock";
 
-export default function Alarm({ user, userAlarm }) {
+export default function Alarm({ user, userAlarm, allAlarms, alarmTomorrow }) {
   const [second, setSecond] = useState("");
   const [minute, setMinute] = useState("");
   const [hour, setHour] = useState("");
@@ -65,6 +65,11 @@ export default function Alarm({ user, userAlarm }) {
               </Text>
             </View>
           </View>
+          <Text style={globalStyles.text}>
+            Tomorrow's alarm: {alarmTomorrow ? alarmTomorrow.date : "Everyday"}{" "}
+            at {alarmTomorrow ? alarmTomorrow.time : userAlarm.alarm_end}
+          </Text>
+          {alarmTomorrow ? <View></View> : <Text></Text>}
         </>
       ) : (
         <Text style={globalStyles.text}>Please set your alarm</Text>

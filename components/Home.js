@@ -15,6 +15,8 @@ export default function Home({
   const [refresh, setRefresh] = useState(false);
   const [userAlarm, setUserAlarm] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [allAlarms, setAllAlarms] = useState([]);
+  const [alarmTomorrow, setAlarmTomorrow] = useState({});
 
   useEffect(() => {
     // async function getUserData() {
@@ -194,12 +196,25 @@ export default function Home({
 
       const currentAlarm = alarmArray.find((alarm) => alarm.date === today);
       // currentAlarm will be undefined on the first day where the alarm is set
-      console.log(currentAlarm);
+      // console.log(currentAlarm);
       if (currentAlarm) {
         setAlarmTrigger(currentAlarm);
+      } else if (
+        !currentAlarm &&
+        alarmArray.find((alarm) => today > alarm.date)
+      ) {
+        setAlarmTrigger({
+          date: new Date(),
+          time: userAlarm.alarm_end,
+        });
       } else {
         setAlarmTrigger(null);
       }
+
+      setAllAlarms(alarmArray);
+      setAlarmTomorrow(alarmArray.find((alarm) => alarm.date > today));
+      // console.log(allAlarms);
+      // console.log(alarmTomorrow);
     }
   }, [refresh, loaded]);
 
@@ -231,7 +246,14 @@ export default function Home({
     >
       <Tab.Screen
         name="Alarm"
-        children={() => <Alarm user={user} userAlarm={userAlarm} />}
+        children={() => (
+          <Alarm
+            user={user}
+            userAlarm={userAlarm}
+            allAlarms={allAlarms}
+            alarmTomorrow={alarmTomorrow}
+          />
+        )}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
