@@ -30,8 +30,20 @@ export default function App() {
   const [notificationTitle, setNotificationTitle] = useState("");
   const [alarmTrigger, setAlarmTrigger] = useState("");
 
-  console.log(notificationTitle);
-  console.log(alarmTrigger);
+  // console.log(notificationTitle);
+  // console.log(alarmTrigger);
+
+  async function scheduleLocalNotification() {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: notificationTitle,
+        body: "RING RING RING TIME TO GET UP!",
+      },
+      trigger: {
+        seconds: 1,
+      },
+    });
+  }
 
   useEffect(() => {
     async function prepare() {

@@ -47,7 +47,6 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
           is_disabled: false,
         }),
       });
-      setRefresh((refresh) => !refresh);
       Alert.alert("Alarm has been created");
     } else {
       await fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
@@ -61,9 +60,10 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
           is_disabled: false,
         }),
       });
-      setRefresh((refresh) => !refresh);
       Alert.alert("Alarm has been updated");
     }
+    setRefresh((refresh) => !refresh);
+    // bug here , update is one render delayed, renders previous state (GET BACK TO THIS LATER DONT FORGET)
   };
 
   return (

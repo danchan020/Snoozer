@@ -29,7 +29,7 @@ export default function Home({
     async function getAlarmData() {
       const response = await fetch("http://localhost:3000/alarms");
       const alarmJSON = await response.json();
-      await setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
+      setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
       setLoaded(true);
     }
     getAlarmData();
@@ -94,9 +94,10 @@ export default function Home({
       // console.log(totalDays);
 
       // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
+      // console.log(userAlarm.updated_at);
       const tomorrow = new Date(userAlarm.updated_at);
       tomorrow.setDate(tomorrow.getDate() + 1);
-      // console.log(tomorrow);
+      // console.log(tomorrow)
       // tomorrow is a date object
 
       let alarmArray = [
@@ -214,7 +215,9 @@ export default function Home({
       setAllAlarms(alarmArray);
       setAlarmTomorrow(alarmArray.find((alarm) => alarm.date > today));
       // console.log(allAlarms);
-      // console.log(alarmTomorrow);
+      console.log(alarmTomorrow);
+      console.log(userAlarm.alarm_start);
+      // why is userAlarm updating, but alarmTomorrow is not
     }
   }, [refresh, loaded]);
 
