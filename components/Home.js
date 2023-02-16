@@ -215,15 +215,14 @@ export default function Home({
       setAllAlarms(alarmArray);
       setAlarmTomorrow(alarmArray.find((alarm) => alarm.date > today));
       // console.log(allAlarms);
-      console.log(alarmTomorrow);
-      console.log(userAlarm.alarm_start);
-      // why is userAlarm updating, but alarmTomorrow is not
+      // console.log(alarmTomorrow); delayed update
+      // console.log(userAlarm.alarm_start); delayed update
     }
   }, [refresh, loaded]);
 
   // console.log(userAlarm.updated_at);
-  console.log(alarmTomorrow);
-  console.log(userAlarm.alarm_start);
+  // console.log(alarmTomorrow); delayed update
+  // console.log(userAlarm.alarm_start); updates immediately
 
   return (
     <Tab.Navigator

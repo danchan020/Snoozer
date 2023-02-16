@@ -35,10 +35,12 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
 
   const handleAlarm = async () => {
     if (
-      parseInt(startTime.substring(0, 2)) < parseInt(endTime.substring(0, 2)) ||
-      (parseInt(startTime.substring(0, 2)) ===
-        parseInt(endTime.substring(0, 2)) &&
-        parseInt(startTime.substring(3, 5)) < parseInt(endTime.substring(3, 5)))
+      parseInt(alarmStart.substring(0, 2)) <
+        parseInt(alarmEnd.substring(0, 2)) ||
+      (parseInt(alarmStart.substring(0, 2)) ===
+        parseInt(alarmEnd.substring(0, 2)) &&
+        parseInt(alarmStart.substring(3, 5)) <
+          parseInt(alarmEnd.substring(3, 5)))
     ) {
       Alert.alert("Start time must be greater than end time.");
     } else {
@@ -73,26 +75,26 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
       setRefresh((refresh) => !refresh);
       // bug here , update is one render delayed, renders previous state (GET BACK TO THIS LATER DONT FORGET)
     }
-
-    return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={globalStyles.container}>
-          <SetAlarmName handleAlarmName={handleAlarmName} />
-          <View style={styles.container}>
-            <SetAlarmStart handleAlarmStart={handleAlarmStart} />
-            <SetAlarmEnd handleAlarmEnd={handleAlarmEnd} />
-          </View>
-          <SetIncrement handleAlarmIncrement={handleAlarmIncrement} />
-          <TouchableOpacity
-            onPress={() => handleAlarm()}
-            style={[globalStyles.button, { width: 220, borderRadius: 17 }]}
-          >
-            <Text style={globalStyles.text}>Set Alarm ⏰</Text>
-          </TouchableOpacity>
-        </View>
-      </TouchableWithoutFeedback>
-    );
   };
+
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={globalStyles.container}>
+        <SetAlarmName handleAlarmName={handleAlarmName} />
+        <View style={styles.container}>
+          <SetAlarmStart handleAlarmStart={handleAlarmStart} />
+          <SetAlarmEnd handleAlarmEnd={handleAlarmEnd} />
+        </View>
+        <SetIncrement handleAlarmIncrement={handleAlarmIncrement} />
+        <TouchableOpacity
+          onPress={() => handleAlarm()}
+          style={[globalStyles.button, { width: 220, borderRadius: 17 }]}
+        >
+          <Text style={globalStyles.text}>Set Alarm ⏰</Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
 
 const styles = StyleSheet.create({
