@@ -222,6 +222,8 @@ export default function Home({
   }, [refresh, loaded]);
 
   // console.log(userAlarm.updated_at);
+  console.log(alarmTomorrow);
+  console.log(userAlarm.alarm_start);
 
   return (
     <Tab.Navigator
