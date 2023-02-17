@@ -19,13 +19,6 @@ export default function Home({
   const [alarmTomorrow, setAlarmTomorrow] = useState({});
 
   useEffect(() => {
-    // async function getUserData() {
-    //   const response = await fetch("http://localhost:3000/me");
-    //   const userJSON = await response.json();
-    //   setCurrentUser(userJSON);
-    // }
-    // getUserData();
-
     async function getAlarmData() {
       const response = await fetch("http://localhost:3000/alarms");
       const alarmJSON = await response.json();
@@ -34,7 +27,7 @@ export default function Home({
     }
     getAlarmData();
 
-    console.log(userAlarm);
+    // console.log(userAlarm);
 
     // (hours) substring( 0 , 2 )
     // (minutes) substring( 3 , 5 )
@@ -96,9 +89,9 @@ export default function Home({
       // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
       // console.log(userAlarm.updated_at);
       const tomorrow = new Date(userAlarm.updated_at);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      // console.log(tomorrow)
-      // tomorrow is a date object
+      tomorrow.setDate(tomorrow.getDate());
+      // console.log(tomorrow);
+      // created_at and updated_at values are in UTC , need to make this local
 
       let alarmArray = [
         {

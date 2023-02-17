@@ -55,7 +55,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       setTime(
         `${new Date().getHours().toString().padStart(2, 0)}:${new Date()
           .getMinutes()
