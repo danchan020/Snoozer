@@ -18,7 +18,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSAllowsArbitraryLoads": {
+            "NSAllowsArbitraryLoads": true
+        }
+    }
     },
     "android": {
       "adaptiveIcon": {

@@ -35,25 +35,6 @@ export default function Settings({
   };
 
   const handleChangeUsername = (values) => {
-    if (values.email.length === 0 || values.email.includes("@")) {
-      Alert.alert("Please enter a valid email");
-    } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      }).then((response) => {
-        if (response.ok) {
-          Alert.alert("Email successfully changed.");
-        } else {
-          response.json().then((errors) => alert(errors.errors));
-        }
-      });
-      setRefresh((refresh) => !refresh);
-    }
-  };
-
-  const handleChangeEmail = (values) => {
     if (values.username.length === 0) {
       Alert.alert("Username is required");
     } else {
@@ -63,8 +44,32 @@ export default function Settings({
         body: JSON.stringify(values),
       }).then((response) => {
         if (response.ok) {
-          response.json().then((data) => setUser(data));
-          Alert.alert("Username successfully changed.");
+          response.json().then((data) => {
+            setUser(data);
+          });
+          Alert.alert("Username changed successfully.");
+        } else {
+          response.json().then((errors) => alert(errors.errors));
+        }
+      });
+      setRefresh((refresh) => !refresh);
+    }
+  };
+
+  const handleChangeEmail = (values) => {
+    if (values.email.length === 0 || !values.email.includes("@")) {
+      Alert.alert("Please enter a valid email");
+    } else {
+      fetch(`http://localhost:3000/users/${user.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }).then((response) => {
+        if (response.ok) {
+          response.json().then((data) => {
+            setUser(data);
+          });
+          Alert.alert("Email changed successfully.");
         } else {
           response.json().then((errors) => alert(errors.errors));
         }
@@ -81,7 +86,10 @@ export default function Settings({
             initialValues={{
               username: "",
             }}
-            onSubmit={handleChangeUsername}
+            onSubmit={(values, { resetForm }) => {
+              handleChangeUsername(values);
+              resetForm();
+            }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <View style={styles.form}>
@@ -106,7 +114,10 @@ export default function Settings({
             initialValues={{
               email: "",
             }}
-            onSubmit={handleChangeEmail}
+            onSubmit={(values, { resetForm }) => {
+              handleChangeEmail(values);
+              resetForm();
+            }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <View style={styles.form}>
@@ -116,6 +127,53 @@ export default function Settings({
                   value={values.email}
                   style={styles.input}
                   placeholder={`Email: ${user.email}`}
+                  placeholderTextColor="#cecece"
+                />
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  style={globalStyles.button}
+                >
+                  <Text style={globalStyles.text}>Change</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </Formik>
+          <Formik
+            initialValues={{
+              oldPassword: "",
+              password: "",
+              passwordConfirmation: "",
+            }}
+            onSubmit={(values, { resetForm }) => {
+              handleChangePassword(values);
+              resetForm();
+            }}
+          >
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <View style={styles.passwordForm}>
+                <Text style={globalStyles.text}> Change Password </Text>
+                <TextInput
+                  onChangeText={handleChange("oldPassword")}
+                  onBlur={handleBlur("oldPassword")}
+                  value={values.oldPassword}
+                  style={styles.input}
+                  placeholder="Enter old password"
+                  placeholderTextColor="#cecece"
+                />
+                <TextInput
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  value={values.password}
+                  style={styles.input}
+                  placeholder="Enter new password"
+                  placeholderTextColor="#cecece"
+                />
+                <TextInput
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  value={values.password}
+                  style={styles.input}
+                  placeholder="Confirm new password"
                   placeholderTextColor="#cecece"
                 />
                 <TouchableOpacity
@@ -143,6 +201,10 @@ const styles = StyleSheet.create({
   container: {},
   form: {
     flexDirection: "row",
+  },
+  passwordForm: {
+    flexDirection: "column",
+    alignItems: "center",
   },
   input: {
     margin: 10,

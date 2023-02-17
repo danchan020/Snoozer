@@ -285,7 +285,13 @@ export default function Home({
       <Tab.Screen
         name="Settings"
         children={() => (
-          <Settings user={user} setUser={setUser} userAlarm={userAlarm} />
+          <Settings
+            user={user}
+            setUser={setUser}
+            userAlarm={userAlarm}
+            refresh={refresh}
+            setRefresh={setRefresh}
+          />
         )}
         options={{
           headerTitleStyle: {

@@ -65,7 +65,7 @@ export default function App() {
       );
       // console.log(time);
       if (user && alarmTrigger) {
-        console.log(alarmTrigger.time, time);
+        // console.log(alarmTrigger.time, time);
         if (time === alarmTrigger.time) {
           scheduleLocalNotification();
           alert("TIME TO WAKE UP!!!");
