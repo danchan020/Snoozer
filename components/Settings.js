@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 
-export default function Settings({ setUser }) {
+export default function Settings({ user, setUser, userAlarm }) {
   const navigation = useNavigation();
 
   const handleLogout = () => {
@@ -12,7 +12,7 @@ export default function Settings({ setUser }) {
       if (response.ok) {
         // console.log(response);
         // console.log("HELLO");
-        setUser(false);
+        setUser(null);
         navigation.navigate("Landing");
       }
     });

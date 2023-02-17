@@ -29,9 +29,6 @@ export default function Home({
 
     // console.log(userAlarm);
 
-    // (hours) substring( 0 , 2 )
-    // (minutes) substring( 3 , 5 )
-
     // first we need some math to calculate the hours and minutes from the start of the alarm to the end of the alarm
     // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
 
@@ -87,6 +84,7 @@ export default function Home({
       // console.log(totalDays);
 
       // create an alarm array, should include the day and time of the user's first alarm + push all future alarms into the array
+
       // console.log(userAlarm.updated_at);
       const tomorrow = new Date(userAlarm.updated_at);
       tomorrow.setDate(tomorrow.getDate());
@@ -286,7 +284,9 @@ export default function Home({
       />
       <Tab.Screen
         name="Settings"
-        children={() => <Settings setUser={setUser} />}
+        children={() => (
+          <Settings user={user} setUser={setUser} userAlarm={userAlarm} />
+        )}
         options={{
           headerTitleStyle: {
             fontFamily: "Sriracha_400Regular",
