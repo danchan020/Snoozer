@@ -28,6 +28,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./local/assets/snoozer-logo.png",
+          "color": "#ffffff",
+          "sounds": "./local/assets/iphone_alarm.mp3"
+        }
+      ]
+    ]
   }
 }

@@ -21,13 +21,19 @@ export default function Signup({ setUser }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        setUser(data);
-        navigation.navigate("Home");
-      });
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          // console.log(data);
+          setUser(data);
+          navigation.navigate("Home");
+        });
+      } else {
+        response.json().then((errors) => {
+          alert(errors.errors);
+        });
+      }
+    });
   }; //still need error handling
 
   return (

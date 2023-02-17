@@ -69,6 +69,9 @@ export default function App() {
         }
       }
     }, 60000);
+    return () => {
+      clearInterval(time);
+    };
   }, [time]);
 
   useEffect(() => {
