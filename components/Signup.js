@@ -48,16 +48,7 @@ export default function Signup({ setUser }) {
           }}
           onSubmit={handleSignup}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
-          }) => (
+          {({ values, handleChange, handleBlur, handleSubmit }) => (
             <View style={styles.container}>
               <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
               <TextInput

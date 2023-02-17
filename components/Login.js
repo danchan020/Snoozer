@@ -42,15 +42,7 @@ export default function Login({ setUser }) {
           initialValues={{ email: "", password: "" }}
           onSubmit={handleLogin}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+          {({ values, handleChange, handleBlur, handleSubmit }) => (
             <View style={styles.container}>
               <Text style={[globalStyles.text, { color: "black" }]}>Email</Text>
               <TextInput
