@@ -15,7 +15,12 @@ import SetAlarmEnd from "./SetAlarmEnd";
 import SetIncrement from "./SetIncrement";
 import { globalStyles } from "../styles/global";
 
-export default function SetAlarm({ user, userAlarm, setRefresh }) {
+export default function SetAlarm({
+  user,
+  userAlarm,
+  setRefresh,
+  setUserAlarm,
+}) {
   const [alarmName, setAlarmName] = useState("");
   const [alarmStart, setAlarmStart] = useState("");
   const [alarmEnd, setAlarmEnd] = useState("");
@@ -26,13 +31,6 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
   const handleAlarmEnd = (value) => setAlarmEnd(value);
   const handleAlarmIncrement = (value) => setAlarmIncrement(value);
 
-  // console.log(alarmName);
-  // console.log(alarmStart);
-  // console.log(alarmEnd);
-  // console.log(alarmIncrement);
-  // console.log(currentUser);
-  // console.log(userAlarm);
-
   const handleAlarm = async () => {
     if (
       parseInt(alarmStart.substring(0, 2)) <
@@ -42,7 +40,7 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
         parseInt(alarmStart.substring(3, 5)) <
           parseInt(alarmEnd.substring(3, 5)))
     ) {
-      Alert.alert("Start time must be greater than end time.");
+      Alert.alert("Start time must be greater than end time");
     } else {
       if (!userAlarm) {
         await fetch("http://localhost:3000/alarms", {
@@ -71,9 +69,16 @@ export default function SetAlarm({ user, userAlarm, setRefresh }) {
           }),
         });
         Alert.alert("Alarm has been updated");
+        const updatedAlarmResponse = await fetch(
+          `http://localhost:3000/alarms/${userAlarm.id}`
+        );
+        const updatedAlarm = await updatedAlarmResponse.json();
+        setUserAlarm(updatedAlarm);
       }
       setRefresh((refresh) => !refresh);
-      // bug here , update is one render delayed, renders previous state (GET BACK TO THIS LATER DONT FORGET)
+      // bug here , previous alarmTomorrow data is used throughout the application (userAlarm updated correctly)
+      // because useeffect alarm fetch of created or updated data occurs after initial rerender (GET BACK TO THIS LATER DONT FORGET)
+      // refresh toggle essentially didnt do what I wanted it to do
     }
   };
 

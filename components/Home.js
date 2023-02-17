@@ -13,7 +13,7 @@ export default function Home({
 }) {
   const Tab = createBottomTabNavigator();
   const [refresh, setRefresh] = useState(false);
-  const [userAlarm, setUserAlarm] = useState({});
+  const [userAlarm, setUserAlarm] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [allAlarms, setAllAlarms] = useState([]);
   const [alarmTomorrow, setAlarmTomorrow] = useState({});
@@ -34,7 +34,7 @@ export default function Home({
     }
     getAlarmData();
 
-    // console.log(userAlarm);
+    console.log(userAlarm);
 
     // (hours) substring( 0 , 2 )
     // (minutes) substring( 3 , 5 )
@@ -42,7 +42,7 @@ export default function Home({
     // first we need some math to calculate the hours and minutes from the start of the alarm to the end of the alarm
     // this way we can calculate how many days it will take to reach the goal (end of the alarm) based on the alarm increment
 
-    if (loaded) {
+    if (loaded && userAlarm) {
       setNotificationTitle(userAlarm.alarm_name);
 
       // create a variable for difference in hours and a variable for difference in minutes
@@ -272,7 +272,13 @@ export default function Home({
       <Tab.Screen
         name="Set Alarm"
         children={() => (
-          <SetAlarm user={user} userAlarm={userAlarm} setRefresh={setRefresh} />
+          <SetAlarm
+            user={user}
+            userAlarm={userAlarm}
+            setRefresh={setRefresh}
+            setUserAlarm={setUserAlarm}
+            setAlarmTomorrow={setAlarmTomorrow}
+          />
         )}
         options={{
           headerTitleStyle: {
