@@ -31,6 +31,7 @@ export default function App() {
   const [alarmTrigger, setAlarmTrigger] = useState("");
   const [time, setTime] = useState("");
 
+  // console.log(time);
   // console.log(notificationTitle);
   // console.log(alarmTrigger);
 
@@ -46,23 +47,25 @@ export default function App() {
     });
   }
 
-  useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       setTime(
         `${new Date().getHours().toString().padStart(2, 0)}:${new Date()
           .getMinutes()
           .toString()
           .padStart(2, 0)}`
       );
+      // console.log(time);
       if (user && alarmTrigger) {
+        console.log(alarmTrigger.time, time);
         if (time === alarmTrigger.time) {
           scheduleLocalNotification();
           alert("TIME TO WAKE UP!!!");
@@ -70,9 +73,11 @@ export default function App() {
       }
     }, 60000);
     return () => {
-      clearInterval(time);
+      clearInterval(interval);
     };
   }, [time]);
+
+  // console.log(time);
 
   useEffect(() => {
     async function prepare() {

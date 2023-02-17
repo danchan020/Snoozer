@@ -69,6 +69,7 @@ export default class AnalogClock extends Component {
           let b = 60 - 30 * i;
           return (
             <View
+              key={i}
               style={{
                 position: "absolute",
                 transform: [

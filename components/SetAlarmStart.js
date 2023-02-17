@@ -28,7 +28,7 @@ export default function SetAlarmStart({ handleAlarmStart }) {
           }}
         >
           {hours.map((hour) => (
-            <Picker.Item label={hour.label} value={hour.value} />
+            <Picker.Item key={hour} label={hour.label} value={hour.value} />
           ))}
         </Picker>
         <Picker
@@ -44,7 +44,11 @@ export default function SetAlarmStart({ handleAlarmStart }) {
           }}
         >
           {minutes.map((minute) => (
-            <Picker.Item label={minute.label} value={minute.value} />
+            <Picker.Item
+              key={minute}
+              label={minute.label}
+              value={minute.value}
+            />
           ))}
         </Picker>
       </View>

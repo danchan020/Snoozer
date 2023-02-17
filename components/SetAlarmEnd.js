@@ -28,7 +28,7 @@ export default function SetAlarmEnd({ handleAlarmEnd }) {
           }}
         >
           {hours.map((hour) => (
-            <Picker.Item label={hour.label} value={hour.value} />
+            <Picker.Item key={hour} label={hour.label} value={hour.value} />
           ))}
         </Picker>
         <Picker
@@ -43,8 +43,12 @@ export default function SetAlarmEnd({ handleAlarmEnd }) {
             borderRadius: 25,
           }}
         >
-          {minutes.map((minnute) => (
-            <Picker.Item label={minnute.label} value={minnute.value} />
+          {minutes.map((minute) => (
+            <Picker.Item
+              key={minute}
+              label={minute.label}
+              value={minute.value}
+            />
           ))}
         </Picker>
       </View>
