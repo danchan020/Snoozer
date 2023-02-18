@@ -18,7 +18,7 @@ export default function Login({ setUser }) {
 
   const handleLogin = (values) => {
     // console.log(values);
-    fetch("http://192.168.1.17:3000/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -30,7 +30,7 @@ export default function Login({ setUser }) {
           navigation.navigate("Home");
         });
       } else {
-        response.json().then((errors) => alert(errors.errors));
+        response.json().catch((errors) => console.log(errors));
       }
     });
   };

@@ -23,7 +23,7 @@ export default function Settings({
   const navigation = useNavigation();
 
   const handleLogout = () => {
-    fetch("http://192.168.1.17:3000/logout", {
+    fetch("http://localhost:3000/logout", {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {
@@ -31,6 +31,8 @@ export default function Settings({
         // console.log("HELLO");
         setUser(null);
         navigation.navigate("Landing");
+      } else {
+        response.json().catch((errors) => console.log(errors));
       }
     });
   };
@@ -39,7 +41,7 @@ export default function Settings({
     if (values.username.length === 0) {
       Alert.alert("Username is required");
     } else {
-      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
+      fetch(`http://localhost:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -50,7 +52,7 @@ export default function Settings({
           });
           Alert.alert("Username changed successfully.");
         } else {
-          response.json().then((errors) => alert(errors.errors));
+          response.json().catch((errors) => console.log(errors));
         }
       });
       setRefresh((refresh) => !refresh);
@@ -61,7 +63,7 @@ export default function Settings({
     if (values.email.length === 0 || !values.email.includes("@")) {
       Alert.alert("Please enter a valid email");
     } else {
-      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
+      fetch(`http://localhost:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -72,7 +74,7 @@ export default function Settings({
           });
           Alert.alert("Email changed successfully.");
         } else {
-          response.json().then((errors) => alert(errors.errors));
+          response.json().catch((errors) => console.log(errors));
         }
       });
       setRefresh((refresh) => !refresh);
@@ -89,7 +91,7 @@ export default function Settings({
     } else if (values.password !== values.passwordConfirmation) {
       Alert.alert("Password fields do not match");
     } else {
-      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
+      fetch(`http://localhost:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -100,7 +102,7 @@ export default function Settings({
           });
           Alert.alert("Password has been updated.");
         } else {
-          response.json().then((errors) => alert(errors.errors));
+          response.json().catch((errors) => console.log(errors));
         }
       });
       setRefresh((refresh) => !refresh);
@@ -108,7 +110,7 @@ export default function Settings({
   };
 
   const handleAlarmSwitch = () => {
-    fetch(`http://192.168.1.17:3000/alarms/${userAlarm.id}`, {
+    fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ is_disabled: `${!userAlarm.is_disabled}` }),
@@ -118,7 +120,7 @@ export default function Settings({
           setUserAlarm(data);
         });
       } else {
-        response.json().then((errors) => alert(errors.errors));
+        response.json().catch((errors) => console.log(errors));
       }
     });
     setRefresh((refresh) => !refresh);
@@ -258,7 +260,7 @@ export default function Settings({
             ) : (
               <Text style={[globalStyles.text, { fontSize: 18 }]}>
                 {" "}
-                "Configure your alarm to enable this feature"{" "}
+                Configure your alarm to enable this feature{" "}
               </Text>
             )}
           </View>

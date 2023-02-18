@@ -43,7 +43,7 @@ export default function SetAlarm({
       Alert.alert("Start time must be greater than end time");
     } else {
       if (!userAlarm) {
-        await fetch("http://192.168.1.17:3000/alarms", {
+        await fetch("http://localhost:3000/alarms", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -57,7 +57,7 @@ export default function SetAlarm({
         });
         Alert.alert("Alarm has been created");
       } else {
-        await fetch(`http://192.168.1.17:3000/alarms/${userAlarm.id}`, {
+        await fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -70,7 +70,7 @@ export default function SetAlarm({
         });
         Alert.alert("Alarm has been updated");
         const updatedAlarmResponse = await fetch(
-          `http://192.168.1.17:3000/alarms/${userAlarm.id}`
+          `http://localhost:3000/alarms/${userAlarm.id}`
         );
         const updatedAlarm = await updatedAlarmResponse.json();
         setUserAlarm(updatedAlarm);

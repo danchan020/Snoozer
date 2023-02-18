@@ -48,9 +48,11 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch("http://192.168.1.17:3000/me").then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      } else {
+        r.json().catch((errors) => console.log(errors));
       }
     });
   }, []);
