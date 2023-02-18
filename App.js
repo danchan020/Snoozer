@@ -48,13 +48,14 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("http://192.168.1.17:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
   }, []);
 
+  // if (userAlarm && !userAlarm.is_disabled) {}
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(

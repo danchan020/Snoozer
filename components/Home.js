@@ -20,7 +20,7 @@ export default function Home({
 
   useEffect(() => {
     async function getAlarmData() {
-      const response = await fetch("http://localhost:3000/alarms");
+      const response = await fetch("http://192.168.1.17/alarms");
       const alarmJSON = await response.json();
       setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
       setLoaded(true);

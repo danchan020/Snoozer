@@ -17,7 +17,7 @@ export default function Signup({ setUser }) {
 
   const handleSignup = (values) => {
     // console.log(values);
-    fetch("http://localhost:3000/signup", {
+    fetch("http://192.168.1.17:3000/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

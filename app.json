@@ -21,7 +21,11 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSAllowsArbitraryLoads": {
-            "NSAllowsArbitraryLoads": true
+            "NSExceptionDomains":{
+              "localhost":{
+                "NSExceptionAllowsInsecureHTTPLoads": true
+              }
+            }
         }
     }
     },

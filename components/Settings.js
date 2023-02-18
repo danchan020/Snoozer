@@ -23,7 +23,7 @@ export default function Settings({
   const navigation = useNavigation();
 
   const handleLogout = () => {
-    fetch("http://localhost:3000/logout", {
+    fetch("http://192.168.1.17:3000/logout", {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {
@@ -39,7 +39,7 @@ export default function Settings({
     if (values.username.length === 0) {
       Alert.alert("Username is required");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -61,7 +61,7 @@ export default function Settings({
     if (values.email.length === 0 || !values.email.includes("@")) {
       Alert.alert("Please enter a valid email");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -89,7 +89,7 @@ export default function Settings({
     } else if (values.password !== values.passwordConfirmation) {
       Alert.alert("Password fields do not match");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`http://192.168.1.17:3000/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -108,7 +108,7 @@ export default function Settings({
   };
 
   const handleAlarmSwitch = () => {
-    fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
+    fetch(`http://192.168.1.17:3000/alarms/${userAlarm.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ is_disabled: `${!userAlarm.is_disabled}` }),
