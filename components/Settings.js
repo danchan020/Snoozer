@@ -23,7 +23,7 @@ export default function Settings({
   const navigation = useNavigation();
 
   const handleLogout = () => {
-    fetch("http://localhost:3000/logout", {
+    fetch("https://8dd3-76-14-68-51.ngrok.io/logout", {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {
@@ -41,7 +41,7 @@ export default function Settings({
     if (values.username.length === 0) {
       Alert.alert("Username is required");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`https://8dd3-76-14-68-51.ngrok.io/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -63,7 +63,7 @@ export default function Settings({
     if (values.email.length === 0 || !values.email.includes("@")) {
       Alert.alert("Please enter a valid email");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`https://8dd3-76-14-68-51.ngrok.io/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -91,7 +91,7 @@ export default function Settings({
     } else if (values.password !== values.passwordConfirmation) {
       Alert.alert("Password fields do not match");
     } else {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`https://8dd3-76-14-68-51.ngrok.io/users/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -110,7 +110,7 @@ export default function Settings({
   };
 
   const handleAlarmSwitch = () => {
-    fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
+    fetch(`https://8dd3-76-14-68-51.ngrok.io/alarms/${userAlarm.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ is_disabled: `${!userAlarm.is_disabled}` }),

@@ -20,7 +20,7 @@ export default function Home({
 
   useEffect(() => {
     async function getAlarmData() {
-      const response = await fetch("http://localhost:3000/alarms");
+      const response = await fetch("https://8dd3-76-14-68-51.ngrok.io/alarms");
       const alarmJSON = await response.json();
       setUserAlarm(alarmJSON.find((alarm) => alarm.user_id === user.id));
       setLoaded(true);

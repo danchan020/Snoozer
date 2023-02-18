@@ -48,7 +48,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("https://8dd3-76-14-68-51.ngrok.io/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
