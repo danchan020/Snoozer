@@ -289,7 +289,7 @@ export default function Home({
             user={user}
             setUser={setUser}
             userAlarm={userAlarm}
-            refresh={refresh}
+            setUserAlarm={setUserAlarm}
             setRefresh={setRefresh}
           />
         )}
