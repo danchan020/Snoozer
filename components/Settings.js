@@ -81,13 +81,13 @@ export default function Settings({
 
   const handleChangePassword = (values) => {
     if (
-      values.oldPassword.length === 0 ||
+      values.old_password.length === 0 ||
       values.password.length === 0 ||
       values.passwordConfirmation.length === 0
     ) {
-      Alert.alert("Password fields must be completed");
+      Alert.alert("Password fields must be filled");
     } else if (values.password !== values.passwordConfirmation) {
-      Alert.alert("Password fields do not match:");
+      Alert.alert("Password fields do not match");
     } else {
       fetch(`http://localhost:3000/users/${user.id}`, {
         method: "PATCH",
@@ -190,7 +190,7 @@ export default function Settings({
           </Formik>
           <Formik
             initialValues={{
-              oldPassword: "",
+              old_password: "",
               password: "",
               passwordConfirmation: "",
             }}
@@ -206,9 +206,9 @@ export default function Settings({
                   Change Password{" "}
                 </Text>
                 <TextInput
-                  onChangeText={handleChange("oldPassword")}
-                  onBlur={handleBlur("oldPassword")}
-                  value={values.oldPassword}
+                  onChangeText={handleChange("old_password")}
+                  onBlur={handleBlur("old_password")}
+                  value={values.old_password}
                   style={styles.input}
                   placeholder="Enter old password"
                   placeholderTextColor="#cecece"
@@ -222,9 +222,9 @@ export default function Settings({
                   placeholderTextColor="#cecece"
                 />
                 <TextInput
-                  onChangeText={handleChange("password")}
-                  onBlur={handleBlur("password")}
-                  value={values.password}
+                  onChangeText={handleChange("passwordConfirmation")}
+                  onBlur={handleBlur("passwordConfirmation")}
+                  value={values.passwordConfirmation}
                   style={styles.input}
                   placeholder="Confirm new password"
                   placeholderTextColor="#cecece"
@@ -249,14 +249,14 @@ export default function Settings({
             </Text>
             {userAlarm ? (
               <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={userAlarm.is_disabled ? "#f5dd4b" : "#f4f3f4"}
+                trackColor={{ false: "#767577", true: "#414999" }}
+                thumbColor={userAlarm.is_disabled ? "#81b0ff" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={handleAlarmSwitch}
                 value={userAlarm.is_disabled}
               />
             ) : (
-              <Text style={[globalStyles.text, { fontSize: 23 }]}>
+              <Text style={[globalStyles.text, { fontSize: 18 }]}>
                 {" "}
                 "Configure your alarm to enable this feature"{" "}
               </Text>

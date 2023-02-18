@@ -33,7 +33,7 @@ export default function Alarm({ user, userAlarm, allAlarms, alarmTomorrow }) {
       <Text style={[globalStyles.text, styles.digitalClock]}>
         {hour}:{minute}:{second}
       </Text>
-      {userAlarm ? (
+      {userAlarm && !userAlarm.is_disabled ? (
         <>
           <Text
             style={[globalStyles.text, { marginVertical: 8, fontSize: 21 }]}
@@ -96,7 +96,7 @@ export default function Alarm({ user, userAlarm, allAlarms, alarmTomorrow }) {
           )}
         </>
       ) : (
-        <Text style={globalStyles.text}>Please set your alarm</Text>
+        <Text style={globalStyles.text}>Please set or enable your alarm</Text>
       )}
     </View>
   );
