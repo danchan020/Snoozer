@@ -188,7 +188,12 @@ export default function Home({
       // console.log(today);
       // console.log(alarmArray);
 
-      const currentAlarm = alarmArray.find((alarm) => alarm.date === today);
+      const currentAlarm = alarmArray.find(
+        (alarm) =>
+          // today > alarm.date
+          // console.log(alarm.date)
+          alarm.date === today
+      );
       // currentAlarm will be undefined on the first day where the alarm is set
       // console.log(currentAlarm);
       if (currentAlarm) {

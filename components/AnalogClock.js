@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
+// sourced analogclock component from https://github.com/gaetanozappi/react-native-clock-analog
 export default class AnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -146,6 +147,7 @@ export default class AnalogClock extends Component {
   }
 }
 
+// proptypes basically typescript at runtime
 AnalogClock.propTypes = {
   size: PropTypes.number,
   colorClock: PropTypes.string,

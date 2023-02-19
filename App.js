@@ -66,7 +66,7 @@ export default function App() {
           .toString()
           .padStart(2, 0)}`
       );
-      // console.log(time);
+
       if (user && alarmTrigger) {
         // console.log(alarmTrigger.time, time);
         if (time === alarmTrigger.time) {
