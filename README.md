@@ -1,6 +1,6 @@
 # Snoozer
 
-<img src="/assets/snoozer-logo.png"/>
+<img src="/assets/snoozer-logo.png" width=350 height=350/>
 
 A React Native mobile app for adjusting the user's sleep pattern.
 
