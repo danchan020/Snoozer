@@ -17,6 +17,12 @@ Daniel will wake up at 8:00 the next day, and he will wake up 7:55 the day after
 
 # GIFs
 
+<img src="/assets/simulator-login.gif" width=200 />
+Login / Signup 
+
+<img src="/assets/simulator-alarm.gif" width=200/>
+Alarm / Alarm Update
+
 **To get started:**
 
 Make sure you have either xCode on Mac installed or Expo Go app installed on iPhone or Android device.
