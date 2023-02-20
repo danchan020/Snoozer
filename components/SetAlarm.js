@@ -86,8 +86,9 @@ export default function SetAlarm({
       }
       setRefresh((refresh) => !refresh);
       // bug here , previous alarmTomorrow state is used throughout the application (userAlarm updates correctly) because
-      // useeffect alarm fetch of created or updated data occurs after initial rerender (GET BACK TO THIS LATER DONT FORGET)
+      // useeffect alarm fetch of created or updated data occurs after initial rerender
       // fixed by fetching data and updating state in handle request, leaving notes here as learning reminders
+      // second bug where alarmTomorrow state is undefined on create, but on update the render updates state correctly?
     }
   };
 
