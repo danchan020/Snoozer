@@ -89,9 +89,9 @@ export default function Home({
 
       // console.log(userAlarm.updated_at);
       const tomorrow = new Date(userAlarm.updated_at);
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(tomorrow.getHours() + 16);
       // console.log(tomorrow);
-      // created_at and updated_at values are in UTC , need to make this local
+      // created_at and updated_at values are in UTC , need to make this local (fake fix by adding 16 hours instead of one day)
 
       let alarmArray = [
         {
@@ -108,8 +108,8 @@ export default function Home({
       // create a for loop that ends when index reaches total days
 
       for (let i = 2; i <= totalDays; i++) {
-        const nextDay = new Date(userAlarm.updated_at);
-        nextDay.setDate(nextDay.getDate() + i);
+        const nextDay = new Date(tomorrow);
+        nextDay.setDate(nextDay.getDate() + (i - 1));
 
         // console.log(nextDay);
 
