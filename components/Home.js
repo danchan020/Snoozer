@@ -89,7 +89,7 @@ export default function Home({
 
       // console.log(userAlarm.updated_at);
       const tomorrow = new Date(userAlarm.updated_at);
-      tomorrow.setDate(tomorrow.getDate());
+      tomorrow.setDate(tomorrow.getDate() + 1);
       // console.log(tomorrow);
       // created_at and updated_at values are in UTC , need to make this local
 
@@ -102,6 +102,7 @@ export default function Home({
 
       // console.log(alarmArray);
       // console.log(userAlarm.alarm_start);
+      // console.log(userAlarm.updated_at);
 
       // want to create the alarms for all days of an alarm's total days
       // create a for loop that ends when index reaches total days
@@ -109,6 +110,8 @@ export default function Home({
       for (let i = 2; i <= totalDays; i++) {
         const nextDay = new Date(userAlarm.updated_at);
         nextDay.setDate(nextDay.getDate() + i);
+
+        // console.log(nextDay);
 
         // need the hour and time to add within time property in alarm array
         let hour;
@@ -213,7 +216,8 @@ export default function Home({
       setAllAlarms(alarmArray);
       setAlarmTomorrow(alarmArray.find((alarm) => alarm.date > today));
       // console.log(allAlarms);
-      // console.log(alarmTomorrow); delayed update
+      // console.log(alarmTomorrow);
+      //delayed update
       // console.log(userAlarm.alarm_start); delayed update
     }
   }, [refresh, loaded]);
