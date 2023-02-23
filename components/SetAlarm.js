@@ -43,7 +43,7 @@ export default function SetAlarm({
       Alert.alert("Start time must be greater than end time");
     } else {
       if (!userAlarm) {
-        await fetch("https://8dd3-76-14-68-51.ngrok.io/alarms", {
+        await fetch("http://localhost:3000/alarms", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -57,23 +57,20 @@ export default function SetAlarm({
         });
         Alert.alert("Alarm has been created");
       } else {
-        await fetch(
-          `https://8dd3-76-14-68-51.ngrok.io/alarms/${userAlarm.id}`,
-          {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              alarm_name: alarmName,
-              alarm_start: alarmStart,
-              alarm_end: alarmEnd,
-              alarm_increment: alarmIncrement,
-              is_disabled: false,
-            }),
-          }
-        );
+        await fetch(`http://localhost:3000/alarms/${userAlarm.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            alarm_name: alarmName,
+            alarm_start: alarmStart,
+            alarm_end: alarmEnd,
+            alarm_increment: alarmIncrement,
+            is_disabled: false,
+          }),
+        });
         Alert.alert("Alarm has been updated");
         const updatedAlarmResponse = await fetch(
-          `https://8dd3-76-14-68-51.ngrok.io/alarms/${userAlarm.id}`
+          `http://localhost:3000/alarms/${userAlarm.id}`
         );
         if (updatedAlarmResponse.ok) {
           const updatedAlarm = await updatedAlarmResponse.json();

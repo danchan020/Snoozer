@@ -19,7 +19,7 @@ Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
-    shouldSetBadge: false,
+    shouldSetBadge: true,
   }),
 });
 
@@ -48,7 +48,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch("https://8dd3-76-14-68-51.ngrok.io/me").then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
@@ -68,7 +68,7 @@ export default function App() {
       );
 
       if (user && alarmTrigger) {
-        // console.log(alarmTrigger.time, time);
+        console.log(alarmTrigger.time, time);
         if (time === alarmTrigger.time) {
           scheduleLocalNotification();
           alert("TIME TO WAKE UP!!!");

@@ -17,7 +17,7 @@ export default function Signup({ setUser }) {
 
   const handleSignup = (values) => {
     // console.log(values);
-    fetch("https://8dd3-76-14-68-51.ngrok.io/signup", {
+    fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
